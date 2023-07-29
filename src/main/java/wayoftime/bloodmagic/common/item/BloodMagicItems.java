@@ -39,6 +39,9 @@ import wayoftime.bloodmagic.common.item.sigil.ItemSigilSuppression;
 import wayoftime.bloodmagic.common.item.sigil.ItemSigilTeleposition;
 import wayoftime.bloodmagic.common.item.sigil.ItemSigilVoid;
 import wayoftime.bloodmagic.common.item.sigil.ItemSigilWater;
+
+import wayoftime.bloodmagic.common.item.sigil.ItemSigilHarvestGoddess;
+
 import wayoftime.bloodmagic.common.item.soul.ItemMonsterSoul;
 import wayoftime.bloodmagic.common.item.soul.ItemSentientAxe;
 import wayoftime.bloodmagic.common.item.soul.ItemSentientPickaxe;
