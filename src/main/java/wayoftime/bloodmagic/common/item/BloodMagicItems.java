@@ -178,7 +178,7 @@ public class BloodMagicItems
 	public static final RegistryObject<Item> SUPPRESSION_SIGIL = ITEMS.register("sigilofsuppression", () -> new ItemSigilSuppression());
 	public static final RegistryObject<Item> TELEPOSITION_SIGIL = BASICITEMS.register("telepositionsigil", () -> new ItemSigilTeleposition());
 
-	public static final RegistryObject<Item> HARVEST_GODDESS_SIGIL = BASICITEMS.register("harvestsigil", () -> new ItemSigilHarvestGoddess());
+	public static final RegistryObject<Item> HARVEST_GODDESS_SIGIL = ITEMS.register("harvestgoddesssigil", () -> new ItemSigilHarvestGoddess());
 	
 	public static final RegistryObject<Item> ARCANE_ASHES = BASICITEMS.register("arcaneashes", () -> new ItemArcaneAshes());
 	public static final RegistryObject<Item> DAGGER_OF_SACRIFICE = BASICITEMS.register("daggerofsacrifice", () -> new ItemDaggerOfSacrifice());

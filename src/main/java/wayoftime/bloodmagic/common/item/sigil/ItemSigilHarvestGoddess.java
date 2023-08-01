@@ -1,5 +1,9 @@
 package wayoftime.bloodmagic.common.item.sigil;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.entity.player.Player;
@@ -8,6 +12,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.Containers;
 import net.minecraft.server.level.ServerLevel;
 import wayoftime.bloodmagic.core.data.SoulTicket;
 import wayoftime.bloodmagic.util.helper.NetworkHelper;
@@ -29,39 +34,35 @@ public class ItemSigilHarvestGoddess extends ItemSigilToggleableBase
 			return;
 
 		int range = 3;
-		int verticalRange = 2;
+		int verticalRange = 1;
 		int posX = (int) Math.round(player.getX() - 0.5f);
 		int posY = (int) player.getY();
 		int posZ = (int) Math.round(player.getZ() - 0.5f);
 		if (worldIn instanceof ServerLevel)
 		{
-			ServerLevel serverWorld = (ServerLevel) worldIn;
+			ServerLevel world = (ServerLevel) worldIn;
 			for (int ix = posX - range; ix <= posX + range; ix++)
 			{
 				for (int iz = posZ - range; iz <= posZ + range; iz++)
 				{
-					for (int iy = posY - verticalRange; iy <= posY + verticalRange; iy++)
+					BlockPos cropPos = new BlockPos(ix, posY, iz);
+					BlockState harvestState = worldIn.getBlockState(cropPos);
+					for (IHarvestHandler handler : HarvestRegistry.getHarvestHandlers())
 					{
-						BlockPos blockPos = new BlockPos(ix, iy, iz);
-						BlockState state = worldIn.getBlockState(blockPos);
-                        // harvesting here
-                        for (IHarvestHandler handler : HarvestRegistry.getHarvestHandlers())
-		                {
-		                	if (handler.test(world, cropPos, harvestState))
-	                		{
-				                List<ItemStack> drops = Lists.newArrayList();
-			                	if (handler.harvest(world, cropPos, harvestState, drops))
-		                		{
-			                		for (ItemStack stack : drops)
-			                		{
-				                		if (stack.isEmpty())
-					                		continue;
-                        
-				                		Containers.dropItemStack(world, cropPos.getX(), cropPos.getY(), cropPos.getZ(), stack);
-                                    }
-                                }
-                            }
-                        }
+						if (handler.test(world, cropPos, harvestState))
+						{
+							List<ItemStack> drops = Lists.newArrayList();
+							if (handler.harvest(world, cropPos, harvestState, drops))
+							{
+								for (ItemStack drop : drops)
+								{
+									if (drop.isEmpty())
+										continue;
+					
+									Containers.dropItemStack(world, cropPos.getX(), cropPos.getY(), cropPos.getZ(), drop);
+								}
+							}
+						}
 					}
 				}
 			}
