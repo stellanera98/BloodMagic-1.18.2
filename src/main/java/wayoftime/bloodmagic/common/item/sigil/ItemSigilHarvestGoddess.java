@@ -4,27 +4,22 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.Containers;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.core.Direction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.Containers;
-import net.minecraft.server.level.ServerLevel;
-import wayoftime.bloodmagic.core.data.SoulTicket;
-import wayoftime.bloodmagic.util.helper.NetworkHelper;
-import wayoftime.bloodmagic.util.helper.PlayerHelper;
+import net.minecraft.world.level.block.state.BlockState;
 import wayoftime.bloodmagic.ritual.harvest.HarvestRegistry;
 import wayoftime.bloodmagic.ritual.harvest.IHarvestHandler;
+import wayoftime.bloodmagic.util.helper.PlayerHelper;
 
 public class ItemSigilHarvestGoddess extends ItemSigilToggleableBase
 {
 	public ItemSigilHarvestGoddess()
 	{
-		super("harvest_goddess", 750);
+		super("harvest_goddess", 600);
 	}
 
 	@Override
@@ -34,7 +29,6 @@ public class ItemSigilHarvestGoddess extends ItemSigilToggleableBase
 			return;
 
 		int range = 3;
-		int verticalRange = 1;
 		int posX = (int) Math.round(player.getX() - 0.5f);
 		int posY = (int) player.getY();
 		int posZ = (int) Math.round(player.getZ() - 0.5f);
@@ -58,7 +52,7 @@ public class ItemSigilHarvestGoddess extends ItemSigilToggleableBase
 								{
 									if (drop.isEmpty())
 										continue;
-					
+
 									Containers.dropItemStack(world, cropPos.getX(), cropPos.getY(), cropPos.getZ(), drop);
 								}
 							}
