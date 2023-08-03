@@ -665,6 +665,8 @@ public class GeneratorLanguage extends LanguageProvider
 		addItem(BloodMagicItems.SUPPRESSION_SIGIL, "Sigil of Suppression");
 		addItem(BloodMagicItems.TELEPOSITION_SIGIL, "Teleposition Sigil");
 
+		addItem(BloodMagicItems.HARVEST_GODDESS_SIGIL, "Sigil of the Harvest Goddess");
+
 		addItem(BloodMagicBlocks.LIFE_ESSENCE_BUCKET, "Bucket of Life");
 		addItem(BloodMagicItems.ARCANE_ASHES, "Arcane Ashes");
 		addItem(BloodMagicItems.SLATE, "Blank Slate");
@@ -690,6 +692,7 @@ public class GeneratorLanguage extends LanguageProvider
 		addItem(BloodMagicItems.REAGENT_HOLDING, "Holding Reagent");
 		addItem(BloodMagicItems.REAGENT_SUPPRESSION, "Suppression Reagent");
 		addItem(BloodMagicItems.REAGENT_TELEPOSITION, "Teleposition Reagent");
+		addItem(BloodMagicItems.REAGENT_HARVEST, "Harvesting Reagent");
 
 		addItem(BloodMagicItems.PETTY_GEM, "Petty Tartaric Gem");
 		addItem(BloodMagicItems.LESSER_GEM, "Lesser Tartaric Gem");

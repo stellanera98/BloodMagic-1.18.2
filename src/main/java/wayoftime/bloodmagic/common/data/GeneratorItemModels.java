@@ -96,6 +96,7 @@ public class GeneratorItemModels extends ItemModelProvider
 		registerToggleableItem(BloodMagicItems.MAGNETISM_SIGIL.get());
 		registerToggleableItem(BloodMagicItems.ICE_SIGIL.get());
 		registerToggleableItem(BloodMagicItems.SUPPRESSION_SIGIL.get());
+		registerToggleableItem(BloodMagicItems.HARVEST_GODDESS_SIGIL.get());
 		registerDemonWillVariantItem(BloodMagicItems.PETTY_GEM.get());
 		registerDemonWillVariantItem(BloodMagicItems.LESSER_GEM.get());
 		registerDemonWillVariantItem(BloodMagicItems.COMMON_GEM.get());
