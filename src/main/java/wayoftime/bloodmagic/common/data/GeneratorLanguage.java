@@ -692,6 +692,7 @@ public class GeneratorLanguage extends LanguageProvider
 		addItem(BloodMagicItems.REAGENT_HOLDING, "Holding Reagent");
 		addItem(BloodMagicItems.REAGENT_SUPPRESSION, "Suppression Reagent");
 		addItem(BloodMagicItems.REAGENT_TELEPOSITION, "Teleposition Reagent");
+		addItem(BloodMagicItems.REAGENT_HARVEST, "Harvesting Reagent");
 
 		addItem(BloodMagicItems.PETTY_GEM, "Petty Tartaric Gem");
 		addItem(BloodMagicItems.LESSER_GEM, "Lesser Tartaric Gem");

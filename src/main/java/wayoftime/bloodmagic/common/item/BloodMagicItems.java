@@ -32,6 +32,7 @@ import wayoftime.bloodmagic.common.item.sigil.ItemSigilDivination;
 import wayoftime.bloodmagic.common.item.sigil.ItemSigilFastMiner;
 import wayoftime.bloodmagic.common.item.sigil.ItemSigilFrost;
 import wayoftime.bloodmagic.common.item.sigil.ItemSigilGreenGrove;
+import wayoftime.bloodmagic.common.item.sigil.ItemSigilHarvestGoddess;
 import wayoftime.bloodmagic.common.item.sigil.ItemSigilHolding;
 import wayoftime.bloodmagic.common.item.sigil.ItemSigilLava;
 import wayoftime.bloodmagic.common.item.sigil.ItemSigilMagnetism;
@@ -39,9 +40,6 @@ import wayoftime.bloodmagic.common.item.sigil.ItemSigilSuppression;
 import wayoftime.bloodmagic.common.item.sigil.ItemSigilTeleposition;
 import wayoftime.bloodmagic.common.item.sigil.ItemSigilVoid;
 import wayoftime.bloodmagic.common.item.sigil.ItemSigilWater;
-
-import wayoftime.bloodmagic.common.item.sigil.ItemSigilHarvestGoddess;
-
 import wayoftime.bloodmagic.common.item.soul.ItemMonsterSoul;
 import wayoftime.bloodmagic.common.item.soul.ItemSentientAxe;
 import wayoftime.bloodmagic.common.item.soul.ItemSentientPickaxe;
@@ -179,7 +177,7 @@ public class BloodMagicItems
 	public static final RegistryObject<Item> TELEPOSITION_SIGIL = BASICITEMS.register("telepositionsigil", () -> new ItemSigilTeleposition());
 
 	public static final RegistryObject<Item> HARVEST_GODDESS_SIGIL = ITEMS.register("harvestgoddesssigil", () -> new ItemSigilHarvestGoddess());
-	
+
 	public static final RegistryObject<Item> ARCANE_ASHES = BASICITEMS.register("arcaneashes", () -> new ItemArcaneAshes());
 	public static final RegistryObject<Item> DAGGER_OF_SACRIFICE = BASICITEMS.register("daggerofsacrifice", () -> new ItemDaggerOfSacrifice());
 	public static final RegistryObject<Item> LAVA_CRYSTAL = BASICITEMS.register("lavacrystal", () -> new ItemLavaCrystal());
@@ -228,6 +226,7 @@ public class BloodMagicItems
 	public static final RegistryObject<Item> REAGENT_HOLDING = BASICITEMS.register("reagentholding", () -> new ItemBase());
 	public static final RegistryObject<Item> REAGENT_SUPPRESSION = BASICITEMS.register("reagentsuppression", () -> new ItemBase());
 	public static final RegistryObject<Item> REAGENT_TELEPOSITION = BASICITEMS.register("reagentteleposition", () -> new ItemBase());
+	public static final RegistryObject<Item> REAGENT_HARVEST = BASICITEMS.register("reagentharvest", () -> new ItemBase());
 
 	// Tartaric Gems
 	public static final RegistryObject<Item> PETTY_GEM = ITEMS.register("soulgempetty", () -> new ItemSoulGem("petty", 64));
