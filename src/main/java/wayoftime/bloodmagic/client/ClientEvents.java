@@ -236,6 +236,9 @@ public class ClientEvents
 			registerToggleableProperties(BloodMagicItems.MAGNETISM_SIGIL.get());
 			registerToggleableProperties(BloodMagicItems.SUPPRESSION_SIGIL.get());
 			registerToggleableProperties(BloodMagicItems.ICE_SIGIL.get());
+
+			registerToggleableProperties(BloodMagicItems.HARVEST_GODDESS_SIGIL.get());
+
 			registerMultiWillTool(BloodMagicItems.SENTIENT_SWORD.get());
 			registerMultiWillTool(BloodMagicItems.SENTIENT_AXE.get());
 			registerMultiWillTool(BloodMagicItems.SENTIENT_PICKAXE.get());
