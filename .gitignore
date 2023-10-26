@@ -7,6 +7,10 @@ bin
 .classpath
 .project
 
+# vscode
+.vscode
+.vscode/*
+
 # idea
 out
 *.ipr
