@@ -2,9 +2,14 @@
 bin
 *.launch
 .settings
+.settings/*
 .metadata
 .classpath
 .project
+
+# vscode
+.vscode
+.vscode/*
 
 # idea
 out
