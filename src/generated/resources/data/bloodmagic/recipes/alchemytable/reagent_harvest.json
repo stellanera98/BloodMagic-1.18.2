@@ -1,0 +1,23 @@
+{
+  "type": "bloodmagic:alchemytable",
+  "input": [
+    {
+      "item": "minecraft:golden_hoe"
+    },
+    {
+      "item": "minecraft:dirt"
+    },
+    {
+      "item": "minecraft:golden_shovel"
+    },
+    {
+      "item": "bloodmagic:reagentgrowth"
+    }
+  ],
+  "output": {
+    "item": "bloodmagic:reagentharvest"
+  },
+  "syphon": 10000,
+  "ticks": 200,
+  "upgradeLevel": 4
+}
