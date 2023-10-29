@@ -2,7 +2,6 @@
 bin
 *.launch
 .settings
-.settings/*
 .metadata
 .classpath
 .project
@@ -28,3 +27,4 @@ run
 
 # Files from Forge MDK
 forge*changelog.txt
+*.log
