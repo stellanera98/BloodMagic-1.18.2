@@ -4,8 +4,7 @@
     "tag": "forge:obsidian"
   },
   "output": {
-    "item": "bloodmagic:earthscribetool",
-    "nbt": "{Damage:0}"
+    "item": "bloodmagic:earthscribetool"
   },
   "upgradeLevel": 2,
   "altarSyphon": 1000,

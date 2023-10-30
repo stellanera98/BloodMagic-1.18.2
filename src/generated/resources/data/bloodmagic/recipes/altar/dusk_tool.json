@@ -4,8 +4,7 @@
     "tag": "forge:storage_blocks/coal"
   },
   "output": {
-    "item": "bloodmagic:duskscribetool",
-    "nbt": "{Damage:0}"
+    "item": "bloodmagic:duskscribetool"
   },
   "upgradeLevel": 3,
   "altarSyphon": 2000,
