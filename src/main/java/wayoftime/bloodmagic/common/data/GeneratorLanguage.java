@@ -139,6 +139,7 @@ public class GeneratorLanguage extends LanguageProvider
 		add("tooltip.bloodmagic.enchantfilter.desc", "Filters based off of enchantments.");
 		add("tooltip.bloodmagic.modfilter.desc", "Filters based off of the source mod.");
 		add("tooltip.bloodmagic.compositefilter.desc", "Filters based off of contained filters.");
+		add("tooltip.bloodmagic.fluidfilter.desc", "Will make sure the fluids match.");
 
 		add("tooltip.bloodmagic.hellforgedparts", "These parts are currently beyond your crafting capabilities...");
 
@@ -725,13 +726,6 @@ public class GeneratorLanguage extends LanguageProvider
 		addItem(BloodMagicItems.AIR_INSCRIPTION_TOOL, "Inscription Tool: Air");
 		addItem(BloodMagicItems.DUSK_INSCRIPTION_TOOL, "Inscription Tool: Dusk");
 
-		addItem(BloodMagicItems.BOUND_WATER_INSCRIPTION_TOOL, "Bound Inscription Tool: Water");
-		addItem(BloodMagicItems.BOUND_FIRE_INSCRIPTION_TOOL, "Bound Inscription Tool: Fire");
-		addItem(BloodMagicItems.BOUND_EARTH_INSCRIPTION_TOOL, "Bound Inscription Tool: Earth");
-		addItem(BloodMagicItems.BOUND_AIR_INSCRIPTION_TOOL, "Bound Inscription Tool: Air");
-		addItem(BloodMagicItems.BOUND_DUSK_INSCRIPTION_TOOL, "Bound Inscription Tool: Dusk");
-		addItem(BloodMagicItems.BOUND_DAWN_INSCRIPTION_TOOL, "Bound Inscription Tool: Dawn");
-
 		addItem(BloodMagicItems.BASE_RITUAL_DIVINER, "Ritual Diviner");
 		addItem(BloodMagicItems.DUSK_RITUAL_DIVINER, "Ritual Diviner [Dusk]");
 		addItem(BloodMagicItems.RITUAL_READER, "Ritual Tinkerer");
@@ -798,6 +792,7 @@ public class GeneratorLanguage extends LanguageProvider
 		addItem(BloodMagicItems.ITEM_ENCHANT_FILTER, "Enchantments Item Filter");
 		addItem(BloodMagicItems.ITEM_MOD_FILTER, "Mod Item Filter");
 		addItem(BloodMagicItems.ITEM_COMPOSITE_FILTER, "Composite Item Filter");
+		addItem(BloodMagicItems.ITEM_FLUID_ROUTER_FILTER, "Fluid Filter");
 
 		addItem(BloodMagicItems.FRAME_PARTS, "Filter Parts");
 
