@@ -28,7 +28,7 @@ public class ItemInscriptionTool extends Item
 
 	public ItemInscriptionTool(EnumRuneType type)
 	{
-		super(new Item.Properties().stacksTo(1).tab(BloodMagic.TAB).durability(40));
+		super(new Item.Properties().stacksTo(1).tab(BloodMagic.TAB));
 
 		this.type = type;
 	}

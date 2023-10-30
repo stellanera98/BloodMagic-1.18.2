@@ -204,13 +204,6 @@ public class BloodMagicItems
 	public static final RegistryObject<Item> EARTH_INSCRIPTION_TOOL = BASICITEMS.register("earthscribetool", () -> new ItemInscriptionTool(EnumRuneType.EARTH));
 	public static final RegistryObject<Item> DUSK_INSCRIPTION_TOOL = BASICITEMS.register("duskscribetool", () -> new ItemInscriptionTool(EnumRuneType.DUSK));
 
-	public static final RegistryObject<Item> BOUND_AIR_INSCRIPTION_TOOL = BASICITEMS.register("boundairscribetool", () -> new ItemBindableInscriptionTool(EnumRuneType.AIR));
-	public static final RegistryObject<Item> BOUND_FIRE_INSCRIPTION_TOOL = BASICITEMS.register("boundfirescribetool", () -> new ItemBindableInscriptionTool(EnumRuneType.FIRE));
-	public static final RegistryObject<Item> BOUND_WATER_INSCRIPTION_TOOL = BASICITEMS.register("boundwaterscribetool", () -> new ItemBindableInscriptionTool(EnumRuneType.WATER));
-	public static final RegistryObject<Item> BOUND_EARTH_INSCRIPTION_TOOL = BASICITEMS.register("boundearthscribetool", () -> new ItemBindableInscriptionTool(EnumRuneType.EARTH));
-	public static final RegistryObject<Item> BOUND_DUSK_INSCRIPTION_TOOL = BASICITEMS.register("boundduskscribetool", () -> new ItemBindableInscriptionTool(EnumRuneType.DUSK));
-	public static final RegistryObject<Item> BOUND_DAWN_INSCRIPTION_TOOL = BASICITEMS.register("bounddawnscribetool", () -> new ItemBindableInscriptionTool(EnumRuneType.DAWN));
-
 	public static final RegistryObject<Item> BASE_RITUAL_DIVINER = BASICITEMS.register("ritualdiviner", () -> new ItemRitualDiviner(0));
 	public static final RegistryObject<Item> DUSK_RITUAL_DIVINER = BASICITEMS.register("ritualdivinerdusk", () -> new ItemRitualDiviner(1));
 

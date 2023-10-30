@@ -4,8 +4,7 @@
     "item": "minecraft:magma_cream"
   },
   "output": {
-    "item": "bloodmagic:firescribetool",
-    "nbt": "{Damage:0}"
+    "item": "bloodmagic:firescribetool"
   },
   "upgradeLevel": 2,
   "altarSyphon": 1000,

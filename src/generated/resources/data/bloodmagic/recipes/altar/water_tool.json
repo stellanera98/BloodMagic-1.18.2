@@ -4,8 +4,7 @@
     "tag": "forge:storage_blocks/lapis"
   },
   "output": {
-    "item": "bloodmagic:waterscribetool",
-    "nbt": "{Damage:0}"
+    "item": "bloodmagic:waterscribetool"
   },
   "upgradeLevel": 2,
   "altarSyphon": 1000,

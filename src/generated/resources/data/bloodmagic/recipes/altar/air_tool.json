@@ -4,8 +4,7 @@
     "item": "minecraft:ghast_tear"
   },
   "output": {
-    "item": "bloodmagic:airscribetool",
-    "nbt": "{Damage:0}"
+    "item": "bloodmagic:airscribetool"
   },
   "upgradeLevel": 2,
   "altarSyphon": 1000,
