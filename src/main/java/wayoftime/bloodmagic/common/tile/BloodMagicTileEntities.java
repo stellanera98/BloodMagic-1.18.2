@@ -35,6 +35,8 @@ public class BloodMagicTileEntities
 	public static final RegistryObject<BlockEntityType<TileVeinMineCharge>> VEINMINE_CHARGE_TYPE = TILE_ENTITIES.register("veinmine_charge", () -> BlockEntityType.Builder.of(TileVeinMineCharge::new, BloodMagicBlocks.VEINMINE_CHARGE.get(), BloodMagicBlocks.VEINMINE_CHARGE_2.get()).build(null));
 	public static final RegistryObject<BlockEntityType<TileFungalCharge>> FUNGAL_CHARGE_TYPE = TILE_ENTITIES.register("fungal_charge", () -> BlockEntityType.Builder.of(TileFungalCharge::new, BloodMagicBlocks.FUNGAL_CHARGE.get(), BloodMagicBlocks.FUNGAL_CHARGE_2.get()).build(null));
 
+	public static final RegistryObject<BlockEntityType<TileBloodTank>> BLOOD_TANK_TYPE = TILE_ENTITIES.register("bloodtank", () -> BlockEntityType.Builder.of(TileBloodTank::new, BloodMagicBlocks.BLOOD_TANK.get()).build(null));
+
 	public static final RegistryObject<BlockEntityType<TileRoutingNode>> ROUTING_NODE_TYPE = TILE_ENTITIES.register("itemroutingnode", () -> BlockEntityType.Builder.of(TileRoutingNode::new, BloodMagicBlocks.ROUTING_NODE_BLOCK.get()).build(null));
 	public static final RegistryObject<BlockEntityType<TileInputRoutingNode>> INPUT_ROUTING_NODE_TYPE = TILE_ENTITIES.register("inputroutingnode", () -> BlockEntityType.Builder.of(TileInputRoutingNode::new, BloodMagicBlocks.INPUT_ROUTING_NODE_BLOCK.get()).build(null));
 	public static final RegistryObject<BlockEntityType<TileOutputRoutingNode>> OUTPUT_ROUTING_NODE_TYPE = TILE_ENTITIES.register("outputroutingnode", () -> BlockEntityType.Builder.of(TileOutputRoutingNode::new, BloodMagicBlocks.OUTPUT_ROUTING_NODE_BLOCK.get()).build(null));

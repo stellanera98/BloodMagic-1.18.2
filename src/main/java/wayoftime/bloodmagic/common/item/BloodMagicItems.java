@@ -110,6 +110,7 @@ public class BloodMagicItems
 	public static final RegistryObject<Item> BLOOD_ALTAR_ITEM = ITEMS.register("altar", () -> new BlockItem(BloodMagicBlocks.BLOOD_ALTAR.get(), new Item.Properties().tab(BloodMagic.TAB)));
 	public static final RegistryObject<Item> ALCHEMY_TABLE_ITEM = ITEMS.register("alchemytable", () -> new ItemBlockAlchemyTable(BloodMagicBlocks.ALCHEMY_TABLE.get(), new Item.Properties().tab(BloodMagic.TAB)));
 	public static final RegistryObject<Item> INCENSE_ALTAR_ITEM = ITEMS.register("incensealtar", () -> new BlockItem(BloodMagicBlocks.INCENSE_ALTAR.get(), new Item.Properties().tab(BloodMagic.TAB)));
+	public static final RegistryObject<Item> BLOOD_TANK_ITEM = ITEMS.register("bloodtank", () -> new BlockItem(BloodMagicBlocks.BLOOD_TANK.get(), new Item.Properties().tab(BloodMagic.TAB)));
 
 	public static final RegistryObject<Item> TELEPOSER_ITEM = ITEMS.register("teleposer", () -> new BlockItem(BloodMagicBlocks.TELEPOSER.get(), new Item.Properties().tab(BloodMagic.TAB)));
 

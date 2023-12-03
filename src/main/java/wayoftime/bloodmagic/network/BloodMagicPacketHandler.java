@@ -19,6 +19,7 @@ public class BloodMagicPacketHandler extends BasePacketHandler
 		registerServerToClient(SetClientHealthPacket.class, SetClientHealthPacket::encode, SetClientHealthPacket::decode, SetClientHealthPacket::handle);
 		registerServerToClient(SetClientVelocityPacket.class, SetClientVelocityPacket::encode, SetClientVelocityPacket::decode, SetClientVelocityPacket::handle);
 		registerServerToClient(AlchemyTableFlagPacket.class, AlchemyTableFlagPacket::encode, AlchemyTableFlagPacket::decode, AlchemyTableFlagPacket::handle);
+		registerServerToClient(BloodTankPacket.class, BloodTankPacket::encode, BloodTankPacket::decode, BloodTankPacket::handle);
 
 		registerClientToServer(KeyProcessorPacket.class, KeyProcessorPacket::encode, KeyProcessorPacket::decode, KeyProcessorPacket::handle);
 		registerClientToServer(SigilHoldingPacket.class, SigilHoldingPacket::encode, SigilHoldingPacket::decode, SigilHoldingPacket::handle);

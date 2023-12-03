@@ -111,6 +111,8 @@ public class BloodMagicBlocks
 	public static final RegistryObject<Block> VENGEFUL_CRYSTAL_BLOCK = BLOCKS.register("vengefuldemoncrystal", () -> new BlockDemonCrystal(EnumDemonWillType.VENGEFUL));
 	public static final RegistryObject<Block> STEADFAST_CRYSTAL_BLOCK = BLOCKS.register("steadfastdemoncrystal", () -> new BlockDemonCrystal(EnumDemonWillType.STEADFAST));
 
+	public static final RegistryObject<Block> BLOOD_TANK = BLOCKS.register("bloodtank", () -> new BlockBloodTank());
+
 	public static final RegistryObject<Block> ROUTING_NODE_BLOCK = BLOCKS.register("itemroutingnode", () -> new BlockItemRoutingNode());
 	public static final RegistryObject<Block> INPUT_ROUTING_NODE_BLOCK = BLOCKS.register("inputroutingnode", () -> new BlockInputRoutingNode());
 	public static final RegistryObject<Block> OUTPUT_ROUTING_NODE_BLOCK = BLOCKS.register("outputroutingnode", () -> new BlockOutputRoutingNode());

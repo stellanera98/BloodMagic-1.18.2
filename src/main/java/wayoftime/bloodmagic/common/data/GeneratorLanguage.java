@@ -544,6 +544,7 @@ public class GeneratorLanguage extends LanguageProvider
 		addBlock(BloodMagicBlocks.ACCELERATION_RUNE_2, "Reinforced Acceleration Rune");
 		addBlock(BloodMagicBlocks.CHARGING_RUNE_2, "Reinforced Charging Rune");
 
+		addBlock(BloodMagicBlocks.BLOOD_TANK, "Blood Tank");
 		addBlock(BloodMagicBlocks.BLOOD_ALTAR, "Blood Altar");
 		addBlock(BloodMagicBlocks.SOUL_FORGE, "Hellfire Forge");
 		addBlock(BloodMagicBlocks.BLANK_RITUAL_STONE, "Ritual Stone");

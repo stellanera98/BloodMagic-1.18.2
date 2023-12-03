@@ -690,6 +690,7 @@ public class GeneratorLootTable extends LootTableProvider
 			dropSelf(BloodMagicBlocks.INCENSE_ALTAR.get());
 //			registerNoDropLootTable(BloodMagicBlocks.RAW_CRYSTAL_BLOCK.get());
 			dropOther(BloodMagicBlocks.NETHER_SOIL.get(), Blocks.NETHERRACK);
+			dropSelf(BloodMagicBlocks.BLOOD_TANK.get());
 
 			registerDropCrystalsLootTable(BloodMagicBlocks.RAW_CRYSTAL_BLOCK.get(), BloodMagicItems.RAW_CRYSTAL.get());
 			registerDropCrystalsLootTable(BloodMagicBlocks.CORROSIVE_CRYSTAL_BLOCK.get(), BloodMagicItems.CORROSIVE_CRYSTAL.get());
