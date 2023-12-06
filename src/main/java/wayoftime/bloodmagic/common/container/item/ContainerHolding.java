@@ -8,7 +8,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fml.util.thread.EffectiveSide;
-import wayoftime.bloodmagic.common.block.BloodMagicBlocks;
+import wayoftime.bloodmagic.common.container.BloodMagicContainers;
 import wayoftime.bloodmagic.common.item.inventory.InventoryHolding;
 import wayoftime.bloodmagic.common.item.sigil.ISigil;
 import wayoftime.bloodmagic.common.item.sigil.ItemSigilHolding;
@@ -27,7 +27,7 @@ public class ContainerHolding extends AbstractContainerMenu
 
 	public ContainerHolding(int windowId, Player player, Inventory playerInventory, InventoryHolding inventoryHolding)
 	{
-		super(BloodMagicBlocks.HOLDING_CONTAINER.get(), windowId);
+		super(BloodMagicContainers.HOLDING_CONTAINER.get(), windowId);
 		this.player = player;
 		this.inventoryHolding = inventoryHolding;
 		int currentSlotHeldIn = player.getInventory().selected;

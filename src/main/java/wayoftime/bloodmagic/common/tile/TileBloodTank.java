@@ -59,14 +59,6 @@ public class TileBloodTank extends TileBase implements IFluidHandler
         return tag;
     }
 
-    public static void tick(Level level, BlockPos pos, BlockState state, TileBloodTank tile)
-    {
-        if (level.getGameTime() % 20 == 0)
-        {
-            BloodMagic.LOGGER.debug(String.format("%d/%d %s", tile.getFluidStack().getAmount(), tile.getCapacity(), tile.getFluidStack().getFluid().getRegistryName().toString()));
-        }
-    }
-
     public int getCapacity()
     {
         return capacity;

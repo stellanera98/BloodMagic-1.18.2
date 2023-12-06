@@ -46,6 +46,7 @@ import wayoftime.bloodmagic.client.model.MimicModelLoader;
 import wayoftime.bloodmagic.client.model.SigilHoldingModelLoader;
 import wayoftime.bloodmagic.client.sounds.SoundRegisterListener;
 import wayoftime.bloodmagic.common.block.BloodMagicBlocks;
+import wayoftime.bloodmagic.common.container.BloodMagicContainers;
 import wayoftime.bloodmagic.common.data.GeneratorBaseRecipes;
 import wayoftime.bloodmagic.common.data.GeneratorBlockStates;
 import wayoftime.bloodmagic.common.data.GeneratorBlockTags;
@@ -127,7 +128,7 @@ public class BloodMagic
 		BloodMagicBlocks.BASICBLOCKS.register(modBus);
 		BloodMagicBlocks.DUNGEONBLOCKS.register(modBus);
 		BloodMagicBlocks.FLUIDS.register(modBus);
-		BloodMagicBlocks.CONTAINERS.register(modBus);
+		BloodMagicContainers.CONTAINERS.register(modBus);
 		BloodMagicEntityTypes.ENTITY_TYPES.register(modBus);
 		BloodMagicTileEntities.TILE_ENTITIES.register(modBus);
 

@@ -1,5 +1,7 @@
 package wayoftime.bloodmagic.common.container.item;
 
+import java.util.Optional;
+
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
@@ -8,10 +10,13 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.fluids.FluidUtil;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fml.util.thread.EffectiveSide;
-import wayoftime.bloodmagic.common.block.BloodMagicBlocks;
+import wayoftime.bloodmagic.common.container.BloodMagicContainers;
 import wayoftime.bloodmagic.common.item.inventory.InventoryFilter;
 import wayoftime.bloodmagic.common.item.routing.IRoutingFilterProvider;
+import wayoftime.bloodmagic.common.item.routing.ItemFluidRouterFilter;
 import wayoftime.bloodmagic.util.GhostItemHelper;
 
 public class ContainerFilter extends AbstractContainerMenu
@@ -32,7 +37,7 @@ public class ContainerFilter extends AbstractContainerMenu
 
 	public ContainerFilter(int windowId, Player player, Inventory playerInventory, ItemStack filterStack)
 	{
-		super(BloodMagicBlocks.FILTER_CONTAINER.get(), windowId);
+		super(BloodMagicContainers.FILTER_CONTAINER.get(), windowId);
 		this.player = player;
 		this.filterStack = filterStack;
 		this.inventoryFilter = new InventoryFilter(filterStack);
@@ -42,17 +47,20 @@ public class ContainerFilter extends AbstractContainerMenu
 
 	public void setup(Inventory inventory, int currentSlotHeldIn)
 	{
-//		for (int columnIndex = 0; columnIndex < ItemRouterFilter.inventorySize; ++columnIndex)
-//		{
-//			this.addSlot(new SlotGhostItem(this, inventoryFilter, player, columnIndex, 8 + columnIndex * 36, 17));
-//		}
+		// for (int columnIndex = 0; columnIndex < ItemRouterFilter.inventorySize;
+		// ++columnIndex)
+		// {
+		// this.addSlot(new SlotGhostItem(this, inventoryFilter, player, columnIndex, 8
+		// + columnIndex * 36, 17));
+		// }
 
 		for (int i = 0; i < 3; i++)
 		{
 			for (int j = 0; j < 3; j++)
 			{
 				this.addSlot(new SlotGhostItem(this, inventoryFilter, player, j + i * 3, 110 + j * 21, 15 + i * 21));
-//				addSlot(new SlotGhostItem(itemInventory, j + i * 3, 26 + j * 18, 15 + i * 18));
+				// addSlot(new SlotGhostItem(itemInventory, j + i * 3, 26 + j * 18, 15 + i *
+				// 18));
 			}
 		}
 
@@ -80,62 +88,66 @@ public class ContainerFilter extends AbstractContainerMenu
 	@Override
 	public void clicked(int slotId, int dragType, ClickType clickTypeIn, Player player)
 	{
-
-		Inventory inventoryPlayer = player.getInventory();
-//      if (!player.worldObj.isRemote)
+		if (slotId >= 0)
 		{
-			if (slotId >= 0)
+			Slot slot = this.slots.get(slotId);
+
+			if (slot instanceof SlotGhostItem) // TODO: make the slot clicking work!
 			{
-				Slot slot = this.slots.get(slotId);
-
-				if (slot instanceof SlotGhostItem) // TODO: make the slot clicking work!
+				lastGhostSlotClicked = slot.getSlotIndex();
+				if ((dragType == 0 || dragType == 1))
 				{
-					lastGhostSlotClicked = slot.getSlotIndex();
-					if ((dragType == 0 || dragType == 1))
-					{
-						ItemStack slotStack = slot.getItem();
-						ItemStack heldStack = this.getCarried();
+					ItemStack slotStack = slot.getItem();
+					ItemStack heldStack = this.getCarried();
 
-						if (dragType == 0) // Left mouse click-eth
+					if (dragType == 0) // Left mouse click-eth
+					{
 						{
+							if (heldStack.isEmpty() && !slotStack.isEmpty())
 							{
-								if (heldStack.isEmpty() && !slotStack.isEmpty())
+								// I clicked on the slot with an empty hand. Selecting!
+								// Return here to not save the server-side inventory
+								// return ItemStack.EMPTY;
+								return;
+							} else if (!heldStack.isEmpty() && slotStack.isEmpty())
+							{
+								if (!((SlotGhostItem) slot).canBeAccessed())
 								{
-									// I clicked on the slot with an empty hand. Selecting!
-									// Return here to not save the server-side inventory
-//									return ItemStack.EMPTY;
+									super.clicked(slotId, dragType, clickTypeIn, player);
 									return;
-								} else if (!heldStack.isEmpty() && slotStack.isEmpty())
+								}
+
+								ItemStack copyStack = heldStack.copy();
+								if (filterStack.getItem() instanceof ItemFluidRouterFilter)
 								{
-									if (!((SlotGhostItem) slot).canBeAccessed())
+									Optional<IFluidHandlerItem> optional = FluidUtil.getFluidHandler(copyStack).resolve();
+									if (!optional.isPresent())
 									{
 										super.clicked(slotId, dragType, clickTypeIn, player);
 										return;
 									}
+								}
 
-									ItemStack copyStack = heldStack.copy();
-									GhostItemHelper.setItemGhostAmount(copyStack, 0);
-									copyStack.setCount(1);
-									slot.set(copyStack);
+								GhostItemHelper.setItemGhostAmount(copyStack, 0);
+								copyStack.setCount(1);
+								slot.set(copyStack);
 
-//									ItemStack filterStack = this.filterStack;
-									if (filterStack.getItem() instanceof IRoutingFilterProvider)
-									{
-										ItemStack filterCopy = ((IRoutingFilterProvider) filterStack.getItem()).getContainedStackForItem(filterStack, heldStack);
-										slot.set(filterCopy);
-									}
+								// ItemStack filterStack = this.filterStack;
+								if (filterStack.getItem() instanceof IRoutingFilterProvider)
+								{
+									ItemStack filterCopy = ((IRoutingFilterProvider) filterStack.getItem()).getContainedStackForType(filterStack, heldStack);
+									slot.set(filterCopy);
 								}
 							}
-						} else
-						// Right mouse click-eth away
-						{
-							slot.set(ItemStack.EMPTY);
 						}
+					} else
+					// Right mouse click-eth away
+					{
+						slot.set(ItemStack.EMPTY);
 					}
 				}
 			}
 		}
-
 		super.clicked(slotId, dragType, clickTypeIn, player);
 	}
 
@@ -180,7 +192,7 @@ public class ContainerFilter extends AbstractContainerMenu
 
 			if (slotIndex >= 0)
 			{
-//                return null;
+				// return null;
 				if (itemstack1.getItem() instanceof IRoutingFilterProvider) // Change to check item is a filter
 				{
 					if (!this.moveItemStackTo(itemstack1, 0, 1, false))

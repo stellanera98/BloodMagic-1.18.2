@@ -7,6 +7,7 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Button.OnPress;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
@@ -25,7 +26,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.network.NetworkHooks;
 import wayoftime.bloodmagic.BloodMagic;
 import wayoftime.bloodmagic.client.button.FilterButtonTogglePress;
@@ -34,19 +34,19 @@ import wayoftime.bloodmagic.common.item.inventory.InventoryFilter;
 import wayoftime.bloodmagic.common.item.inventory.ItemInventory;
 import wayoftime.bloodmagic.common.routing.BasicItemFilter;
 import wayoftime.bloodmagic.common.routing.BlacklistItemFilter;
-import wayoftime.bloodmagic.common.routing.IItemFilter;
+import wayoftime.bloodmagic.common.routing.IRoutingFilter;
 import wayoftime.bloodmagic.util.Constants;
 import wayoftime.bloodmagic.util.GhostItemHelper;
 import wayoftime.bloodmagic.util.Utils;
 
-public class ItemRouterFilter extends Item implements MenuProvider, IItemFilterProvider
+public class ItemItemRouterFilter extends Item implements MenuProvider, IRoutingFilterProvider
 {
 	public static final int inventorySize = 9;
 	public static final int maxUpgrades = 9;
 
 	public static final String FILTER_INV = "filterInventory";
 
-	public ItemRouterFilter()
+	public ItemItemRouterFilter()
 	{
 		super(new Item.Properties().stacksTo(16).tab(BloodMagic.TAB));
 	}
@@ -84,7 +84,7 @@ public class ItemRouterFilter extends Item implements MenuProvider, IItemFilterP
 	}
 
 	@Override
-	public ItemStack getContainedStackForItem(ItemStack filterStack, ItemStack keyStack)
+	public ItemStack getContainedStackForType(ItemStack filterStack, ItemStack keyStack)
 	{
 		ItemStack copyStack = keyStack.copy();
 		GhostItemHelper.setItemGhostAmount(copyStack, 0);
@@ -92,7 +92,8 @@ public class ItemRouterFilter extends Item implements MenuProvider, IItemFilterP
 		return copyStack;
 	}
 
-	protected IItemFilter getFilterTypeFromConfig(ItemStack filterStack)
+	@Override
+	public IRoutingFilter<ItemStack> getFilterTypeFromConfig(ItemStack filterStack)
 	{
 		int state = getCurrentButtonState(filterStack, Constants.BUTTONID.BLACKWHITELIST, 0);
 		if (state == 1)
@@ -110,9 +111,9 @@ public class ItemRouterFilter extends Item implements MenuProvider, IItemFilterP
 	}
 
 	@Override
-	public IItemFilter getInputItemFilter(ItemStack filterStack, BlockEntity tile, IItemHandler handler)
+	public IRoutingFilter<ItemStack> getInputFilter(ItemStack filterStack, BlockEntity tile, Direction side)
 	{
-		IItemFilter testFilter = getFilterTypeFromConfig(filterStack);
+		IRoutingFilter<ItemStack> testFilter = getFilterTypeFromConfig(filterStack);
 
 		List<IFilterKey> filteredList = new ArrayList<>();
 		ItemInventory inv = new InventoryFilter(filterStack);
@@ -133,14 +134,14 @@ public class ItemRouterFilter extends Item implements MenuProvider, IItemFilterP
 			filteredList.add(key);
 		}
 
-		testFilter.initializeFilter(filteredList, tile, handler, false);
+		testFilter.initializeFilter(filteredList, tile, side, false);
 		return testFilter;
 	}
 
 	@Override
-	public IItemFilter getOutputItemFilter(ItemStack filterStack, BlockEntity tile, IItemHandler handler)
+	public IRoutingFilter<ItemStack> getOutputFilter(ItemStack filterStack, BlockEntity tile, Direction side)
 	{
-		IItemFilter testFilter = getFilterTypeFromConfig(filterStack);
+		IRoutingFilter<ItemStack> testFilter = getFilterTypeFromConfig(filterStack);
 
 		List<IFilterKey> filteredList = new ArrayList<>();
 		ItemInventory inv = new InventoryFilter(filterStack); // TODO: Change to grab the filter from the Item
@@ -165,7 +166,7 @@ public class ItemRouterFilter extends Item implements MenuProvider, IItemFilterP
 			filteredList.add(key);
 		}
 
-		testFilter.initializeFilter(filteredList, tile, handler, true);
+		testFilter.initializeFilter(filteredList, tile, side, true);
 
 		return testFilter;
 	}
@@ -285,9 +286,9 @@ public class ItemRouterFilter extends Item implements MenuProvider, IItemFilterP
 	}
 
 	@Override
-	public IItemFilter getUninitializedItemFilter(ItemStack filterStack)
+	public IRoutingFilter<ItemStack> getUninitializedItemFilter(ItemStack filterStack)
 	{
-		IItemFilter testFilter = getFilterTypeFromConfig(filterStack);
+		IRoutingFilter<ItemStack> testFilter = getFilterTypeFromConfig(filterStack);
 
 		List<IFilterKey> filteredList = new ArrayList<>();
 		ItemInventory inv = new InventoryFilter(filterStack);

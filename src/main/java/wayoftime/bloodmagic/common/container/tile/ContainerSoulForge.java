@@ -13,7 +13,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import wayoftime.bloodmagic.api.compat.IDemonWill;
 import wayoftime.bloodmagic.api.compat.IDemonWillGem;
-import wayoftime.bloodmagic.common.block.BloodMagicBlocks;
+import wayoftime.bloodmagic.common.container.BloodMagicContainers;
 import wayoftime.bloodmagic.common.tile.TileSoulForge;
 
 public class ContainerSoulForge extends AbstractContainerMenu
@@ -34,7 +34,7 @@ public class ContainerSoulForge extends AbstractContainerMenu
 
 	public ContainerSoulForge(@Nullable TileSoulForge tile, ContainerData data, int windowId, Inventory playerInventory)
 	{
-		super(BloodMagicBlocks.SOUL_FORGE_CONTAINER.get(), windowId);
+		super(BloodMagicContainers.SOUL_FORGE_CONTAINER.get(), windowId);
 		this.tileForge = tile;
 		this.setup(playerInventory, tile);
 		this.data = data;

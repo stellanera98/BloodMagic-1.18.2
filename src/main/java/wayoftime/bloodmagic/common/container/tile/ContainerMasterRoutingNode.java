@@ -9,7 +9,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.network.FriendlyByteBuf;
-import wayoftime.bloodmagic.common.block.BloodMagicBlocks;
+import wayoftime.bloodmagic.common.container.BloodMagicContainers;
 import wayoftime.bloodmagic.common.item.routing.IRouterUpgrade;
 import wayoftime.bloodmagic.common.tile.routing.TileMasterRoutingNode;
 
@@ -24,7 +24,7 @@ public class ContainerMasterRoutingNode extends AbstractContainerMenu
 
 	public ContainerMasterRoutingNode(@Nullable TileMasterRoutingNode tile, int windowId, Inventory playerInventory)
 	{
-		super(BloodMagicBlocks.MASTER_ROUTING_NODE_CONTAINER.get(), windowId);
+		super(BloodMagicContainers.MASTER_ROUTING_NODE_CONTAINER.get(), windowId);
 		this.tileMasterRoutingNode = tile;
 		this.setup(playerInventory, tile);
 	}

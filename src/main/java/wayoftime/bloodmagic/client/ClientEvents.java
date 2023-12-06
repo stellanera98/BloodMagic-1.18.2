@@ -57,6 +57,7 @@ import wayoftime.bloodmagic.client.screens.ScreenSoulForge;
 import wayoftime.bloodmagic.client.screens.ScreenTeleposer;
 import wayoftime.bloodmagic.client.screens.ScreenTrainingBracelet;
 import wayoftime.bloodmagic.common.block.BloodMagicBlocks;
+import wayoftime.bloodmagic.common.container.BloodMagicContainers;
 import wayoftime.bloodmagic.common.item.BloodMagicItems;
 import wayoftime.bloodmagic.common.item.ItemSacrificialDagger;
 import wayoftime.bloodmagic.common.item.sigil.ItemSigilHolding;
@@ -120,15 +121,15 @@ public class ClientEvents
 
 	public static void registerContainerScreens()
 	{
-		MenuScreens.register(BloodMagicBlocks.SOUL_FORGE_CONTAINER.get(), ScreenSoulForge::new);
-		MenuScreens.register(BloodMagicBlocks.ARC_CONTAINER.get(), ScreenAlchemicalReactionChamber::new);
-		MenuScreens.register(BloodMagicBlocks.ALCHEMY_TABLE_CONTAINER.get(), ScreenAlchemyTable::new);
-		MenuScreens.register(BloodMagicBlocks.HOLDING_CONTAINER.get(), ScreenHolding::new);
-		MenuScreens.register(BloodMagicBlocks.FILTER_CONTAINER.get(), ScreenFilter::new);
-		MenuScreens.register(BloodMagicBlocks.ROUTING_NODE_CONTAINER.get(), ScreenItemRoutingNode::new);
-		MenuScreens.register(BloodMagicBlocks.TRAINING_BRACELET_CONTAINER.get(), ScreenTrainingBracelet::new);
-		MenuScreens.register(BloodMagicBlocks.TELEPOSER_CONTAINER.get(), ScreenTeleposer::new);
-		MenuScreens.register(BloodMagicBlocks.MASTER_ROUTING_NODE_CONTAINER.get(), ScreenMasterRoutingNode::new);
+		MenuScreens.register(BloodMagicContainers.SOUL_FORGE_CONTAINER.get(), ScreenSoulForge::new);
+		MenuScreens.register(BloodMagicContainers.ARC_CONTAINER.get(), ScreenAlchemicalReactionChamber::new);
+		MenuScreens.register(BloodMagicContainers.ALCHEMY_TABLE_CONTAINER.get(), ScreenAlchemyTable::new);
+		MenuScreens.register(BloodMagicContainers.HOLDING_CONTAINER.get(), ScreenHolding::new);
+		MenuScreens.register(BloodMagicContainers.FILTER_CONTAINER.get(), ScreenFilter::new);
+		MenuScreens.register(BloodMagicContainers.ROUTING_NODE_CONTAINER.get(), ScreenItemRoutingNode::new);
+		MenuScreens.register(BloodMagicContainers.TRAINING_BRACELET_CONTAINER.get(), ScreenTrainingBracelet::new);
+		MenuScreens.register(BloodMagicContainers.TELEPOSER_CONTAINER.get(), ScreenTeleposer::new);
+		MenuScreens.register(BloodMagicContainers.MASTER_ROUTING_NODE_CONTAINER.get(), ScreenMasterRoutingNode::new);
 
 	}
 

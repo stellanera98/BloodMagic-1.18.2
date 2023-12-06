@@ -13,7 +13,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
-import wayoftime.bloodmagic.common.block.BloodMagicBlocks;
+import wayoftime.bloodmagic.common.container.BloodMagicContainers;
 import wayoftime.bloodmagic.common.tags.BloodMagicTags;
 import wayoftime.bloodmagic.common.tile.TileAlchemicalReactionChamber;
 
@@ -34,7 +34,7 @@ public class ContainerAlchemicalReactionChamber extends AbstractContainerMenu
 
 	public ContainerAlchemicalReactionChamber(@Nullable TileAlchemicalReactionChamber tile, int windowId, Inventory playerInventory)
 	{
-		super(BloodMagicBlocks.ARC_CONTAINER.get(), windowId);
+		super(BloodMagicContainers.ARC_CONTAINER.get(), windowId);
 		this.tileARC = tile;
 		this.setup(playerInventory, tile);
 	}

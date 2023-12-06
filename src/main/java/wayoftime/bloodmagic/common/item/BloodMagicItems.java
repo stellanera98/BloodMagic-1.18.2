@@ -22,6 +22,7 @@ import wayoftime.bloodmagic.common.item.potion.ItemAlchemyFlaskLingering;
 import wayoftime.bloodmagic.common.item.potion.ItemAlchemyFlaskThrowable;
 import wayoftime.bloodmagic.common.item.routing.ItemCompositeFilter;
 import wayoftime.bloodmagic.common.item.routing.ItemEnchantFilterCore;
+import wayoftime.bloodmagic.common.item.routing.ItemFluidRouterFilter;
 import wayoftime.bloodmagic.common.item.routing.ItemModFilter;
 import wayoftime.bloodmagic.common.item.routing.ItemNodeRouter;
 import wayoftime.bloodmagic.common.item.routing.ItemStandardFilter;
@@ -269,6 +270,7 @@ public class BloodMagicItems
 	public static final RegistryObject<Item> ITEM_COMPOSITE_FILTER = BASICITEMS.register("itemrouterfiltercomposite", ItemCompositeFilter::new);
 	public static final RegistryObject<Item> NODE_ROUTER = BASICITEMS.register("noderouter", ItemNodeRouter::new);
 	public static final RegistryObject<Item> MASTER_NODE_UPGRADE = BASICITEMS.register("mastercore", ItemBasicNodeUpgrade::new);
+	public static final RegistryObject<Item> ITEM_FLUID_ROUTER_FILTER = BASICITEMS.register("fluidrouterfilterexact", ItemFluidRouterFilter::new);
 
 	public static final RegistryObject<Item> FRAME_PARTS = BASICITEMS.register("componentframeparts", ItemBase::new);
 

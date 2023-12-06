@@ -9,7 +9,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.network.FriendlyByteBuf;
-import wayoftime.bloodmagic.common.block.BloodMagicBlocks;
+import wayoftime.bloodmagic.common.container.BloodMagicContainers;
 import wayoftime.bloodmagic.common.item.ITeleposerFocus;
 import wayoftime.bloodmagic.common.tile.TileTeleposer;
 
@@ -24,7 +24,7 @@ public class ContainerTeleposer extends AbstractContainerMenu
 
 	public ContainerTeleposer(@Nullable TileTeleposer tile, int windowId, Inventory playerInventory)
 	{
-		super(BloodMagicBlocks.TELEPOSER_CONTAINER.get(), windowId);
+		super(BloodMagicContainers.TELEPOSER_CONTAINER.get(), windowId);
 		this.tileTeleposer = tile;
 		this.setup(playerInventory, tile);
 	}

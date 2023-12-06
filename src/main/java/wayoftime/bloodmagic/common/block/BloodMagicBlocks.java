@@ -23,7 +23,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
-import net.minecraftforge.common.extensions.IForgeMenuType;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.DeferredRegister;
@@ -33,15 +32,6 @@ import wayoftime.bloodmagic.BloodMagic;
 import wayoftime.bloodmagic.api.compat.EnumDemonWillType;
 import wayoftime.bloodmagic.block.enums.BloodRuneType;
 import wayoftime.bloodmagic.common.block.base.BlockPillarCap;
-import wayoftime.bloodmagic.common.container.item.ContainerFilter;
-import wayoftime.bloodmagic.common.container.item.ContainerHolding;
-import wayoftime.bloodmagic.common.container.item.ContainerTrainingBracelet;
-import wayoftime.bloodmagic.common.container.tile.ContainerAlchemicalReactionChamber;
-import wayoftime.bloodmagic.common.container.tile.ContainerAlchemyTable;
-import wayoftime.bloodmagic.common.container.tile.ContainerItemRoutingNode;
-import wayoftime.bloodmagic.common.container.tile.ContainerMasterRoutingNode;
-import wayoftime.bloodmagic.common.container.tile.ContainerSoulForge;
-import wayoftime.bloodmagic.common.container.tile.ContainerTeleposer;
 import wayoftime.bloodmagic.common.item.BloodMagicItems;
 import wayoftime.bloodmagic.ritual.EnumRuneType;
 
@@ -55,7 +45,6 @@ public class BloodMagicBlocks
 	public static final DeferredRegister<Block> DUNGEONBLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, BloodMagic.MODID);
 	public static final DeferredRegister<Item> ITEMS = BloodMagicItems.ITEMS;
 	public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, BloodMagic.MODID);
-	public static final DeferredRegister<MenuType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, BloodMagic.MODID);
 
 //	public static final RegistryObject<Block> BLOODSTONE = BASICBLOCKS.register("ruby_block", BloodstoneBlock::new);
 	public static final RegistryObject<Block> SOUL_FORGE = BLOCKS.register("soulforge", BlockSoulForge::new);
@@ -156,17 +145,6 @@ public class BloodMagicBlocks
 	public static RegistryObject<LiquidBlock> DOUBT_BLOCK = BLOCKS.register("doubt_block", () -> new LiquidBlock(DOUBT_FLUID, BlockBehaviour.Properties.of(net.minecraft.world.level.material.Material.WATER).noCollission().strength(100.0F).noDrops()));
 	public static RegistryObject<Item> LIFE_ESSENCE_BUCKET = ITEMS.register("life_essence_bucket", () -> new BucketItem(LIFE_ESSENCE_FLUID, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(BloodMagic.TAB)));
 	public static RegistryObject<Item> DOUBT_BUCKET = ITEMS.register("doubt_bucket", () -> new BucketItem(DOUBT_FLUID, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(BloodMagic.TAB)));
-
-	// TODO: Move these to a dedicated class?
-	public static final RegistryObject<MenuType<ContainerSoulForge>> SOUL_FORGE_CONTAINER = CONTAINERS.register("soul_forge_container", () -> IForgeMenuType.create(ContainerSoulForge::new));
-	public static final RegistryObject<MenuType<ContainerAlchemicalReactionChamber>> ARC_CONTAINER = CONTAINERS.register("arc_container", () -> IForgeMenuType.create(ContainerAlchemicalReactionChamber::new));
-	public static final RegistryObject<MenuType<ContainerAlchemyTable>> ALCHEMY_TABLE_CONTAINER = CONTAINERS.register("alchemy_table_container", () -> IForgeMenuType.create(ContainerAlchemyTable::new));
-	public static final RegistryObject<MenuType<ContainerHolding>> HOLDING_CONTAINER = CONTAINERS.register("holding_container", () -> IForgeMenuType.create(ContainerHolding::new));
-	public static final RegistryObject<MenuType<ContainerTeleposer>> TELEPOSER_CONTAINER = CONTAINERS.register("teleposer_container", () -> IForgeMenuType.create(ContainerTeleposer::new));
-	public static final RegistryObject<MenuType<ContainerFilter>> FILTER_CONTAINER = CONTAINERS.register("filter_container", () -> IForgeMenuType.create(ContainerFilter::new));
-	public static final RegistryObject<MenuType<ContainerItemRoutingNode>> ROUTING_NODE_CONTAINER = CONTAINERS.register("routing_node_container", () -> IForgeMenuType.create(ContainerItemRoutingNode::new));
-	public static final RegistryObject<MenuType<ContainerTrainingBracelet>> TRAINING_BRACELET_CONTAINER = CONTAINERS.register("training_bracelet_container", () -> IForgeMenuType.create(ContainerTrainingBracelet::new));
-	public static final RegistryObject<MenuType<ContainerMasterRoutingNode>> MASTER_ROUTING_NODE_CONTAINER = CONTAINERS.register("master_routing_node_container", () -> IForgeMenuType.create(ContainerMasterRoutingNode::new));
 
 	// Dungeon Blocks
 	public static final RegistryObject<Block> DUNGEON_BRICK_1 = DUNGEONBLOCKS.register("dungeon_brick1", () -> new Block(Properties.of(Material.STONE).strength(2.0F, 5.0F).sound(SoundType.STONE).requiresCorrectToolForDrops()));

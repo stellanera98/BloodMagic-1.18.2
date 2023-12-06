@@ -10,7 +10,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import wayoftime.bloodmagic.common.block.BloodMagicBlocks;
+import wayoftime.bloodmagic.common.container.BloodMagicContainers;
 import wayoftime.bloodmagic.common.item.IBloodOrb;
 import wayoftime.bloodmagic.common.tile.TileAlchemyTable;
 
@@ -31,7 +31,7 @@ public class ContainerAlchemyTable extends AbstractContainerMenu
 
 	public ContainerAlchemyTable(@Nullable TileAlchemyTable tile, int windowId, Inventory playerInventory)
 	{
-		super(BloodMagicBlocks.ALCHEMY_TABLE_CONTAINER.get(), windowId);
+		super(BloodMagicContainers.ALCHEMY_TABLE_CONTAINER.get(), windowId);
 		this.tileTable = tile;
 		this.setup(playerInventory, tile);
 	}

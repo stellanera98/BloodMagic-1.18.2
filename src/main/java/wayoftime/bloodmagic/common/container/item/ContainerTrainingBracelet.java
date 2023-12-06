@@ -9,7 +9,7 @@ import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fml.util.thread.EffectiveSide;
-import wayoftime.bloodmagic.common.block.BloodMagicBlocks;
+import wayoftime.bloodmagic.common.container.BloodMagicContainers;
 import wayoftime.bloodmagic.common.item.ItemLivingTome;
 import wayoftime.bloodmagic.common.item.ItemLivingTrainer;
 import wayoftime.bloodmagic.common.item.inventory.InventoryTrainingBracelet;
@@ -32,7 +32,7 @@ public class ContainerTrainingBracelet extends AbstractContainerMenu
 
 	public ContainerTrainingBracelet(int windowId, Player player, Inventory playerInventory, ItemStack filterStack)
 	{
-		super(BloodMagicBlocks.TRAINING_BRACELET_CONTAINER.get(), windowId);
+		super(BloodMagicContainers.TRAINING_BRACELET_CONTAINER.get(), windowId);
 		this.player = player;
 		this.trainerStack = filterStack;
 		this.inventoryTrainer = ((ItemLivingTrainer) filterStack.getItem()).toInventory(filterStack);

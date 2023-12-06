@@ -12,15 +12,17 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.IItemHandler;
 import wayoftime.bloodmagic.common.container.tile.ContainerItemRoutingNode;
-import wayoftime.bloodmagic.common.item.routing.IItemFilterProvider;
-import wayoftime.bloodmagic.common.routing.IInputItemRoutingNode;
-import wayoftime.bloodmagic.common.routing.IItemFilter;
+import wayoftime.bloodmagic.common.item.routing.IRoutingFilterProvider;
+import wayoftime.bloodmagic.common.routing.IInputRoutingNode;
+import wayoftime.bloodmagic.common.routing.IRoutingFilter;
 import wayoftime.bloodmagic.common.tile.BloodMagicTileEntities;
 import wayoftime.bloodmagic.util.Utils;
 
-public class TileInputRoutingNode extends TileFilteredRoutingNode implements IInputItemRoutingNode, MenuProvider
+public class TileInputRoutingNode extends TileFilteredRoutingNode implements IInputRoutingNode, MenuProvider
 {
 	public TileInputRoutingNode(BlockEntityType<?> type, BlockPos pos, BlockState state)
 	{
@@ -39,23 +41,24 @@ public class TileInputRoutingNode extends TileFilteredRoutingNode implements IIn
 	}
 
 	@Override
-	public IItemFilter getInputFilterForSide(Direction side)
+	public IRoutingFilter getInputFilterForSide(Direction side)
 	{
 		BlockEntity tile = getLevel().getBlockEntity(worldPosition.relative(side));
 		if (tile != null)
 		{
 			IItemHandler handler = Utils.getInventory(tile, side.getOpposite());
-			if (handler != null)
+			IFluidHandler fluidHandler = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY).resolve().orElse(null);
+			if (handler != null || fluidHandler != null)
 			{
 				ItemStack filterStack = this.getFilterStack(side);
 
-				if (filterStack.isEmpty() || !(filterStack.getItem() instanceof IItemFilterProvider))
+				if (filterStack.isEmpty() || !(filterStack.getItem() instanceof IRoutingFilterProvider))
 				{
 					return null;
 				}
 
-				IItemFilterProvider filter = (IItemFilterProvider) filterStack.getItem();
-				return filter.getInputItemFilter(filterStack, tile, handler);
+				IRoutingFilterProvider filter = (IRoutingFilterProvider) filterStack.getItem();
+				return filter.getInputFilter(filterStack, tile, side);
 			}
 		}
 

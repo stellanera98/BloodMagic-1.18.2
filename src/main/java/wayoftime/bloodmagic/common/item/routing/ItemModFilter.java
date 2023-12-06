@@ -16,7 +16,7 @@ import wayoftime.bloodmagic.common.item.inventory.ItemInventory;
 import wayoftime.bloodmagic.util.Constants;
 import wayoftime.bloodmagic.util.GhostItemHelper;
 
-public class ItemModFilter extends ItemRouterFilter implements INestableItemFilterProvider
+public class ItemModFilter extends ItemItemRouterFilter implements INestableItemFilterProvider
 {
 	public ItemModFilter()
 	{
