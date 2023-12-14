@@ -16,6 +16,7 @@ import net.minecraftforge.fml.util.thread.EffectiveSide;
 import wayoftime.bloodmagic.common.container.BloodMagicContainers;
 import wayoftime.bloodmagic.common.item.inventory.InventoryFilter;
 import wayoftime.bloodmagic.common.item.routing.IRoutingFilterProvider;
+import wayoftime.bloodmagic.common.item.routing.ItemCollectionFilter;
 import wayoftime.bloodmagic.common.item.routing.ItemFluidRouterFilter;
 import wayoftime.bloodmagic.util.GhostItemHelper;
 
@@ -58,7 +59,13 @@ public class ContainerFilter extends AbstractContainerMenu
 		{
 			for (int j = 0; j < 3; j++)
 			{
-				this.addSlot(new SlotGhostItem(this, inventoryFilter, player, j + i * 3, 110 + j * 21, 15 + i * 21));
+				if (filterStack.getItem() instanceof ItemCollectionFilter)
+				{
+					this.addSlot(new SlotCollectionFilter(this, inventoryFilter, player, j + i * 3, 110 + j * 21, 15 + i * 21));
+				} else
+				{
+					this.addSlot(new SlotGhostItem(this, inventoryFilter, player, j + i * 3, 110 + j * 21, 15 + i * 21));
+				}
 				// addSlot(new SlotGhostItem(itemInventory, j + i * 3, 26 + j * 18, 15 + i *
 				// 18));
 			}
@@ -102,7 +109,6 @@ public class ContainerFilter extends AbstractContainerMenu
 
 					if (dragType == 0) // Left mouse click-eth
 					{
-						{
 							if (heldStack.isEmpty() && !slotStack.isEmpty())
 							{
 								// I clicked on the slot with an empty hand. Selecting!
@@ -139,7 +145,6 @@ public class ContainerFilter extends AbstractContainerMenu
 									slot.set(filterCopy);
 								}
 							}
-						}
 					} else
 					// Right mouse click-eth away
 					{
@@ -287,6 +292,53 @@ public class ContainerFilter extends AbstractContainerMenu
 		public boolean mayPickup(Player player)
 		{
 			return false;
+		}
+	}
+
+	public class SlotCollectionFilter extends Slot
+	{
+		private final Player player;
+		private ContainerFilter containerHolding;
+
+		public SlotCollectionFilter(ContainerFilter containerHolding, Container inventory, Player player, int slotIndex, int x, int y)
+		{
+			super(inventory, slotIndex, x, y);
+			this.player = player;
+			this.containerHolding = containerHolding;
+		}
+
+		@Override
+		public int getMaxStackSize()
+		{
+			return 1;
+		}
+
+		@Override
+		public void setChanged()
+		{
+			super.setChanged();
+
+			if (EffectiveSide.get().isServer())
+			{
+				containerHolding.saveInventory(player);
+			}
+		}
+
+		@Override
+		public boolean mayPlace(ItemStack stack)
+		{
+			return stack.getItem() instanceof IRoutingFilterProvider;
+		}
+
+		@Override
+		public boolean mayPickup(Player playerIn)
+		{
+			return true;
+		}
+
+		public boolean canBeAccessed()
+		{
+			return containerHolding.inventoryFilter.canInventoryBeManipulated();
 		}
 	}
 }

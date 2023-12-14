@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.apache.commons.lang3.tuple.Pair;
 
+import com.google.common.collect.Lists;
+
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Direction;
 import net.minecraft.client.gui.components.Button;
@@ -137,7 +139,7 @@ public class ItemCompositeFilter extends ItemItemRouterFilter implements MenuPro
 	}
 
 	@Override
-	public IRoutingFilter<ItemStack> getInputFilter(ItemStack filterStack, BlockEntity tile, Direction side)
+	public List<IRoutingFilter> getInputFilter(ItemStack filterStack, BlockEntity tile, Direction side)
 	{
 		IRoutingFilter<ItemStack> testFilter = getFilterTypeFromConfig(filterStack);
 
@@ -179,11 +181,13 @@ public class ItemCompositeFilter extends ItemItemRouterFilter implements MenuPro
 		}
 
 		testFilter.initializeFilter(filteredList, tile, side, false);
-		return testFilter;
+		List<IRoutingFilter> list = Lists.newArrayList();
+		list.add(testFilter);
+		return list;
 	}
 
 	@Override
-	public IRoutingFilter<ItemStack> getOutputFilter(ItemStack filterStack, BlockEntity tile, Direction side)
+	public List<IRoutingFilter> getOutputFilter(ItemStack filterStack, BlockEntity tile, Direction side)
 	{
 		IRoutingFilter<ItemStack> testFilter = getFilterTypeFromConfig(filterStack);
 
@@ -231,7 +235,9 @@ public class ItemCompositeFilter extends ItemItemRouterFilter implements MenuPro
 
 		testFilter.initializeFilter(filteredList, tile, side, true);
 
-		return testFilter;
+		List<IRoutingFilter> list = Lists.newArrayList();
+		list.add(testFilter);
+		return list;
 	}
 
 	@Override

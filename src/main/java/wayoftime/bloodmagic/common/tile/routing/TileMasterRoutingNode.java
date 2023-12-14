@@ -106,17 +106,18 @@ public class TileMasterRoutingNode extends TileInventory implements IMasterRouti
 							continue;
 						}
 
-						IRoutingFilter filter = outputNode.getOutputFilterForSide(facing);
+						List<IRoutingFilter> filter = outputNode.getOutputFilterForSide(facing);
 						if (filter != null)
 						{
 							int priority = outputNode.getPriority(facing);
 							if (outputMap.containsKey(TREE_OFFSET - priority))
 							{
-								outputMap.get(TREE_OFFSET - priority).add(filter);
+								List<IRoutingFilter> mapKey = outputMap.get(TREE_OFFSET - priority);
+								filter.forEach(mapKey::add);
 							} else
 							{
 								List<IRoutingFilter> filterList = new LinkedList<>();
-								filterList.add(filter);
+								filter.forEach(filterList::add);
 								outputMap.put(TREE_OFFSET - priority, filterList);
 							}
 						}
@@ -167,17 +168,18 @@ public class TileMasterRoutingNode extends TileInventory implements IMasterRouti
 							continue;
 						}
 
-						IRoutingFilter filter = inputNode.getInputFilterForSide(facing);
+						List<IRoutingFilter> filter = inputNode.getInputFilterForSide(facing);
 						if (filter != null)
 						{
 							int priority = inputNode.getPriority(facing);
 							if (inputMap.containsKey(TREE_OFFSET - priority))
 							{
-								inputMap.get(TREE_OFFSET - priority).add(filter);
+								List<IRoutingFilter> mapKey = inputMap.get(TREE_OFFSET - priority);
+								filter.forEach(mapKey::add);
 							} else
 							{
 								List<IRoutingFilter> filterList = new LinkedList<>();
-								filterList.add(filter);
+								filter.forEach(filterList::add);
 								inputMap.put(TREE_OFFSET - priority, filterList);
 							}
 						}

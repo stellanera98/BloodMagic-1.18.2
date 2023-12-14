@@ -25,7 +25,6 @@ public class GhostFilter implements IGhostIngredientHandler<ScreenFilter>
 	public <I> List<Target<I>> getTargets(ScreenFilter gui, I ingredient, boolean doStart)
 	{
 		List<Target<I>> targets = new ArrayList<>();
-
 		for (Slot slot : gui.getMenu().slots)
 		{
 			if (!slot.isActive())
@@ -35,7 +34,7 @@ public class GhostFilter implements IGhostIngredientHandler<ScreenFilter>
 
 			Rect2i bounds = new Rect2i(gui.getGuiLeft() + slot.x, gui.getGuiTop() + slot.y, 16, 16);
 
-			if (ingredient instanceof ItemStack && (slot instanceof ContainerFilter.SlotGhostItem) && !gui.isFluidFilter())
+			if (ingredient instanceof ItemStack && (slot instanceof ContainerFilter.SlotGhostItem) && gui.getFilterType() == 1)
 			{
 				targets.add(new Target<I>()
 				{
@@ -63,7 +62,7 @@ public class GhostFilter implements IGhostIngredientHandler<ScreenFilter>
 			if (ingredient instanceof ItemStack)
 				optional = FluidUtil.getFluidHandler((ItemStack) ingredient).resolve();
 
-			if ((ingredient instanceof FluidStack || (ingredient instanceof ItemStack && optional.isPresent())) && (slot instanceof ContainerFilter.SlotGhostItem) && gui.isFluidFilter())
+			if ((ingredient instanceof FluidStack || (ingredient instanceof ItemStack && optional.isPresent())) && (slot instanceof ContainerFilter.SlotGhostItem) && gui.getFilterType() == 2)
 			{
 				if (ingredient instanceof ItemStack)
 				{

@@ -140,6 +140,7 @@ public class GeneratorLanguage extends LanguageProvider
 		add("tooltip.bloodmagic.modfilter.desc", "Filters based off of the source mod.");
 		add("tooltip.bloodmagic.compositefilter.desc", "Filters based off of contained filters.");
 		add("tooltip.bloodmagic.fluidfilter.desc", "Will make sure the fluids match.");
+		add("tooltip.bloodmagic.collectionfilter.desc", "Allows to filter different types");
 
 		add("tooltip.bloodmagic.hellforgedparts", "These parts are currently beyond your crafting capabilities...");
 
@@ -785,7 +786,8 @@ public class GeneratorLanguage extends LanguageProvider
 		addItem(BloodMagicItems.ITEM_ENCHANT_FILTER, "Enchantments Item Filter");
 		addItem(BloodMagicItems.ITEM_MOD_FILTER, "Mod Item Filter");
 		addItem(BloodMagicItems.ITEM_COMPOSITE_FILTER, "Composite Item Filter");
-		addItem(BloodMagicItems.ITEM_FLUID_ROUTER_FILTER, "Standard Fluid Filter");
+		addItem(BloodMagicItems.FLUID_ROUTER_FILTER, "Standard Fluid Filter");
+		addItem(BloodMagicItems.FLUID_MOD_FILTER, "Mod Fluid Filter");
 
 		addItem(BloodMagicItems.FRAME_PARTS, "Filter Parts");
 

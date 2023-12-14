@@ -1,5 +1,7 @@
 package wayoftime.bloodmagic.common.tile.routing;
 
+import java.util.List;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -41,7 +43,7 @@ public class TileInputRoutingNode extends TileFilteredRoutingNode implements IIn
 	}
 
 	@Override
-	public IRoutingFilter getInputFilterForSide(Direction side)
+	public List<IRoutingFilter> getInputFilterForSide(Direction side)
 	{
 		BlockEntity tile = getLevel().getBlockEntity(worldPosition.relative(side));
 		if (tile != null)

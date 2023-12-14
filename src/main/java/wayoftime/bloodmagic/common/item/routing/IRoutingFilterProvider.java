@@ -19,9 +19,9 @@ public interface IRoutingFilterProvider
 
 	ItemStack getContainedStackForType(ItemStack filterStack, ItemStack keyStack);
 
-	IRoutingFilter getInputFilter(ItemStack filterStack, BlockEntity tile, Direction side);
+	List<IRoutingFilter> getInputFilter(ItemStack filterStack, BlockEntity tile, Direction side);
 
-	IRoutingFilter getOutputFilter(ItemStack filterStack, BlockEntity tile, Direction side);
+	List<IRoutingFilter> getOutputFilter(ItemStack filterStack, BlockEntity tile, Direction side);
 
 	// Only used for filters that check ItemStacks and do not transfer items to/from
 	// a connected inventory.

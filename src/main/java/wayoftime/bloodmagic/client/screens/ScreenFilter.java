@@ -28,20 +28,22 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import wayoftime.bloodmagic.BloodMagic;
 import wayoftime.bloodmagic.common.container.item.ContainerFilter;
-import wayoftime.bloodmagic.common.item.BloodMagicItems;
 import wayoftime.bloodmagic.common.item.routing.IRoutingFilterProvider;
+import wayoftime.bloodmagic.common.item.routing.ItemCollectionFilter;
 import wayoftime.bloodmagic.common.item.routing.ItemFluidRouterFilter;
+import wayoftime.bloodmagic.common.item.routing.ItemItemRouterFilter;
 import wayoftime.bloodmagic.network.RouterFilterPacket;
-import wayoftime.bloodmagic.util.BMLog;
 import wayoftime.bloodmagic.util.GhostItemHelper;
 
 public class ScreenFilter extends ScreenBase<ContainerFilter>
 {
-	private static final ResourceLocation background = BloodMagic.rl("textures/gui/routingfilter.png");
+	private static ResourceLocation background = BloodMagic.rl("textures/gui/routingfilter.png");
 	public Container filterInventory;
 	private Player player;
 	private int left, top;
-	private boolean isFluidFilter = false;
+
+	// 0 mixed, 1 item, 2 fluid
+	private int filterType = 0;
 
 	private EditBox textBox;
 
@@ -78,11 +80,17 @@ public class ScreenFilter extends ScreenBase<ContainerFilter>
 		buttonKeyList.clear();
 
 		ItemStack filterStack = this.container.filterStack;
+		this.filterType = filterStack.getItem() instanceof ItemFluidRouterFilter ? 2 : filterStack.getItem() instanceof ItemItemRouterFilter ? 1 : 0;
+
+		if (filterStack.getItem() instanceof ItemCollectionFilter)
+		{
+			this.textBox.setVisible(false);
+			this.background = BloodMagic.rl("textures/gui/routingfilter_notext.png");
+			return;
+		}
 
 		if (filterStack.getItem() instanceof IRoutingFilterProvider)
 		{
-			this.isFluidFilter = filterStack.getItem() instanceof ItemFluidRouterFilter;
-
 			IRoutingFilterProvider provider = (IRoutingFilterProvider) filterStack.getItem();
 			List<Pair<String, Button.OnPress>> buttonActionList = provider.getButtonAction(this.container);
 
@@ -346,7 +354,7 @@ public class ScreenFilter extends ScreenBase<ContainerFilter>
 	public List<Component> getTooltipFromItem(ItemStack itemStack)
 	{
 		List<Component> list = super.getTooltipFromItem(itemStack);
-		if (!isFluidFilter)
+		if (filterType == 1)
 		{
 			return list;
 		}
@@ -401,8 +409,8 @@ public class ScreenFilter extends ScreenBase<ContainerFilter>
 //			GuiUtils.drawHoveringText(matrixStack, tooltip, mouseX, mouseY, width, height, -1, font);
 	}
 
-	public boolean isFluidFilter()
+	public int getFilterType()
 	{
-		return this.isFluidFilter;
+		return this.filterType;
 	}
 }

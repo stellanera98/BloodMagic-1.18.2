@@ -1,5 +1,7 @@
 package wayoftime.bloodmagic.common.tile.routing;
 
+import java.util.List;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -12,7 +14,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.IItemHandler;
@@ -42,7 +43,7 @@ public class TileOutputRoutingNode extends TileFilteredRoutingNode implements IO
 	}
 
 	@Override
-	public IRoutingFilter getOutputFilterForSide(Direction side)
+	public List<IRoutingFilter> getOutputFilterForSide(Direction side)
 	{
 		BlockEntity tile = getLevel().getBlockEntity(worldPosition.relative(side));
 		if (tile != null)
