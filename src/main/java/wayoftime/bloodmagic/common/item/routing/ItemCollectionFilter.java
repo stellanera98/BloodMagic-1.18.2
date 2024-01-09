@@ -42,15 +42,16 @@ import wayoftime.bloodmagic.util.Constants;
 import wayoftime.bloodmagic.util.GhostItemHelper;
 import wayoftime.bloodmagic.util.Utils;
 
-public class ItemCollectionFilter extends Item implements MenuProvider, IRoutingFilterProvider {
+public class ItemCollectionFilter extends Item implements MenuProvider, IRoutingFilterProvider
+{
 
     public ItemCollectionFilter()
     {
-		super(new Item.Properties().stacksTo(16).tab(BloodMagic.TAB));
+        super(new Item.Properties().stacksTo(16).tab(BloodMagic.TAB));
     }
 
-	@OnlyIn(Dist.CLIENT)
-	public void appendHoverText(ItemStack filterStack, Level world, List<Component> tooltip, TooltipFlag flag)
+    @OnlyIn(Dist.CLIENT)
+    public void appendHoverText(ItemStack filterStack, Level world, List<Component> tooltip, TooltipFlag flag)
     {
         tooltip.add(new TranslatableComponent("tooltip.bloodmagic.collectionfilter.desc").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.GRAY));
 
@@ -179,7 +180,8 @@ public class ItemCollectionFilter extends Item implements MenuProvider, IRouting
 
     @Override
     public void setGhostItemAmount(ItemStack filterStack, int ghostItemSlot, int amount)
-    {}
+    {
+    }
 
     @Override
     public List<Component> getTextForHoverItem(ItemStack filterStack, String buttonKey, int ghostItemSlot)
@@ -221,12 +223,13 @@ public class ItemCollectionFilter extends Item implements MenuProvider, IRouting
     {
         if (buttonKey.equals(Constants.BUTTONID.BLACKWHITELIST))
         {
-            switch (currentButtonState) {
-                case 1:
-                    return Pair.of(176, 20);
-            
-                default:
-                    return Pair.of(176, 0);
+            switch (currentButtonState)
+            {
+            case 1:
+                return Pair.of(176, 20);
+
+            default:
+                return Pair.of(176, 0);
             }
         }
 
@@ -246,13 +249,14 @@ public class ItemCollectionFilter extends Item implements MenuProvider, IRouting
         if (buttonKey.equals(Constants.BUTTONID.BLACKWHITELIST))
         {
             int nextState = 0;
-            switch (currentButtonState) {
-                case 0:
-                    nextState = 1;
-                    break;
-            
-                default:
-                    nextState = 0;
+            switch (currentButtonState)
+            {
+            case 0:
+                nextState = 1;
+                break;
+
+            default:
+                nextState = 0;
             }
 
             tag.putInt(Constants.NBT.BLACKWHITELIST, nextState);
@@ -287,9 +291,9 @@ public class ItemCollectionFilter extends Item implements MenuProvider, IRouting
         return new TextComponent("Collection Filter");
     }
 
-	@Override
-	public IRoutingFilter getFilterTypeFromConfig(ItemStack filterStack)
-	{
+    @Override
+    public IRoutingFilter getFilterTypeFromConfig(ItemStack filterStack)
+    {
         return new BasicItemFilter();
-	}
+    }
 }

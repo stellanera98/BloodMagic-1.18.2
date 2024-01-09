@@ -4,12 +4,9 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 import org.apache.commons.lang3.tuple.Pair;
-import org.jetbrains.annotations.ApiStatus.OverrideOnly;
-
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec2;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import wayoftime.bloodmagic.BloodMagic;
 import wayoftime.bloodmagic.client.Sprite;
 import wayoftime.bloodmagic.client.hud.element.ElementDemonAura;
@@ -26,15 +23,15 @@ public class Elements
 	{
 		ElementRegistry.registerHandler(new ResourceLocation(BloodMagic.MODID, "demon_will_aura"), new ElementDemonAura(), new Vec2(0.01f, 0.01f));
 
-		ElementRegistry.registerHandler(BloodMagic.rl("blood_tank"), new ElementDivinedInformation<TileBloodTank>(2, true, TileBloodTank.class) {
+		ElementRegistry.registerHandler(BloodMagic.rl("blood_tank"), new ElementDivinedInformation<TileBloodTank>(2, true, TileBloodTank.class)
+		{
 			@Override
 			public void gatherInformation(Consumer<Pair<Sprite, Function<TileBloodTank, String>>> information)
 			{
-				information.accept(Pair.of(new Sprite(new ResourceLocation(BloodMagic.MODID, "textures/gui/widgets.png"), 16, 46, 16, 16), tank -> String.format(
-					"%d/%d %s",
-					tank == null ? 0 : tank.getFluidStack().getAmount(),
-					tank == null ? 16000 : tank.getCapacity(),
-					tank.getFluidStack().getDisplayName().getString())));
+				information.accept(Pair.of(new Sprite(new ResourceLocation(BloodMagic.MODID, "textures/gui/widgets.png"), 16, 46, 16, 16), tank -> String.format("%d/%d %s", tank == null
+						? 0
+						: tank.getFluidStack().getAmount(), tank == null ? 16000
+								: tank.getCapacity(), tank.getFluidStack().getDisplayName().getString())));
 			}
 		}, new Vec2(0.01f, 0.01f));
 

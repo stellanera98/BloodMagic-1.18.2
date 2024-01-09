@@ -80,34 +80,38 @@ public class TileOutputRoutingNode extends TileFilteredRoutingNode implements IO
 		return new TextComponent("Output Routing Node");
 	}
 
-//	@Override
-//	public boolean isFluidOutput(Direction side)
-//	{
-//		return true;
-//	}
-//
-//	@Override
-//	public IFluidFilter getOutputFluidFilterForSide(Direction side)
-//	{
-//		TileEntity tile = getWorld().getTileEntity(pos.offset(side));
-//		if (tile != null && tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side))
-//		{
-//			IFluidHandler handler = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side);
-//			ItemStack filterStack = this.getFilterStack(side);
-//			if (filterStack == null || !(filterStack.getItem() instanceof IFluidFilterProvider))
-//			{
-//				return null;
-//			}
-//
-//			return ((IFluidFilterProvider) filterStack.getItem()).getOutputFluidFilter(filterStack, tile, handler);
-//		}
-//
-//		return null;
-//	}
-//
-//	@Override
-//	public boolean isTankConnectedToSide(Direction side)
-//	{
-//		return true;
-//	}
+	// @Override
+	// public boolean isFluidOutput(Direction side)
+	// {
+	// return true;
+	// }
+	//
+	// @Override
+	// public IFluidFilter getOutputFluidFilterForSide(Direction side)
+	// {
+	// TileEntity tile = getWorld().getTileEntity(pos.offset(side));
+	// if (tile != null &&
+	// tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side))
+	// {
+	// IFluidHandler handler =
+	// tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side);
+	// ItemStack filterStack = this.getFilterStack(side);
+	// if (filterStack == null || !(filterStack.getItem() instanceof
+	// IFluidFilterProvider))
+	// {
+	// return null;
+	// }
+	//
+	// return ((IFluidFilterProvider)
+	// filterStack.getItem()).getOutputFluidFilter(filterStack, tile, handler);
+	// }
+	//
+	// return null;
+	// }
+	//
+	// @Override
+	// public boolean isTankConnectedToSide(Direction side)
+	// {
+	// return true;
+	// }
 }

@@ -2,7 +2,8 @@ package wayoftime.bloodmagic.common.item.routing;
 
 import net.minecraftforge.fluids.FluidStack;
 
-public class FluidFilterKey implements IFilterKey<FluidStack> {
+public class FluidFilterKey implements IFilterKey<FluidStack>
+{
 
     private FluidStack keyStack;
     private int amount;
@@ -13,11 +14,11 @@ public class FluidFilterKey implements IFilterKey<FluidStack> {
         this.keyStack = keyStack;
     }
 
-	@Override
-	public FluidStack getType()
-	{
-		return FluidStack.EMPTY;
-	}
+    @Override
+    public FluidStack getType()
+    {
+        return FluidStack.EMPTY;
+    }
 
     @Override
     public boolean doesStackMatch(FluidStack testStack)
@@ -54,5 +55,5 @@ public class FluidFilterKey implements IFilterKey<FluidStack> {
     {
         this.amount -= changeAmount;
     }
-    
+
 }

@@ -61,7 +61,7 @@ public class ItemFluidModFilter extends ItemFluidRouterFilter
 					continue;
 				}
 
-                FluidStack fluidStack = FluidUtil.getFluidContained(stack).get();
+				FluidStack fluidStack = FluidUtil.getFluidContained(stack).get();
 				TranslatableComponent modText = new TranslatableComponent("tooltip.bloodmagic.filter.from_mod", fluidStack.getFluid().getRegistryName().getNamespace());
 
 				if (isWhitelist)

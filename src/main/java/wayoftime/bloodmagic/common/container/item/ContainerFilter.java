@@ -109,42 +109,42 @@ public class ContainerFilter extends AbstractContainerMenu
 
 					if (dragType == 0) // Left mouse click-eth
 					{
-							if (heldStack.isEmpty() && !slotStack.isEmpty())
+						if (heldStack.isEmpty() && !slotStack.isEmpty())
+						{
+							// I clicked on the slot with an empty hand. Selecting!
+							// Return here to not save the server-side inventory
+							// return ItemStack.EMPTY;
+							return;
+						} else if (!heldStack.isEmpty() && slotStack.isEmpty())
+						{
+							if (!((SlotGhostItem) slot).canBeAccessed())
 							{
-								// I clicked on the slot with an empty hand. Selecting!
-								// Return here to not save the server-side inventory
-								// return ItemStack.EMPTY;
+								super.clicked(slotId, dragType, clickTypeIn, player);
 								return;
-							} else if (!heldStack.isEmpty() && slotStack.isEmpty())
+							}
+
+							ItemStack copyStack = heldStack.copy();
+							if (filterStack.getItem() instanceof ItemFluidRouterFilter)
 							{
-								if (!((SlotGhostItem) slot).canBeAccessed())
+								Optional<IFluidHandlerItem> optional = FluidUtil.getFluidHandler(copyStack).resolve();
+								if (!optional.isPresent())
 								{
 									super.clicked(slotId, dragType, clickTypeIn, player);
 									return;
 								}
-
-								ItemStack copyStack = heldStack.copy();
-								if (filterStack.getItem() instanceof ItemFluidRouterFilter)
-								{
-									Optional<IFluidHandlerItem> optional = FluidUtil.getFluidHandler(copyStack).resolve();
-									if (!optional.isPresent())
-									{
-										super.clicked(slotId, dragType, clickTypeIn, player);
-										return;
-									}
-								}
-
-								GhostItemHelper.setItemGhostAmount(copyStack, 0);
-								copyStack.setCount(1);
-								slot.set(copyStack);
-
-								// ItemStack filterStack = this.filterStack;
-								if (filterStack.getItem() instanceof IRoutingFilterProvider)
-								{
-									ItemStack filterCopy = ((IRoutingFilterProvider) filterStack.getItem()).getContainedStackForType(filterStack, heldStack);
-									slot.set(filterCopy);
-								}
 							}
+
+							GhostItemHelper.setItemGhostAmount(copyStack, 0);
+							copyStack.setCount(1);
+							slot.set(copyStack);
+
+							// ItemStack filterStack = this.filterStack;
+							if (filterStack.getItem() instanceof IRoutingFilterProvider)
+							{
+								ItemStack filterCopy = ((IRoutingFilterProvider) filterStack.getItem()).getContainedStackForType(filterStack, heldStack);
+								slot.set(filterCopy);
+							}
+						}
 					} else
 					// Right mouse click-eth away
 					{

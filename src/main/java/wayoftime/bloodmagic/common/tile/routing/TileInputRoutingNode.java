@@ -80,29 +80,33 @@ public class TileInputRoutingNode extends TileFilteredRoutingNode implements IIn
 		return new TextComponent("Input Routing Node");
 	}
 
-//    @Override
-//    public boolean isFluidInput(Direction side) {
-//        return true;
-//    }
-//
-//    @Override
-//    public IFluidFilter getInputFluidFilterForSide(Direction side) {
-//        TileEntity tile = getWorld().getTileEntity(pos.offset(side));
-//        if (tile != null && tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
-//            IFluidHandler handler = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side);
-//            ItemStack filterStack = this.getFilterStack(side);
-//            if (filterStack == null || !(filterStack.getItem() instanceof IFluidFilterProvider)) {
-//                return null;
-//            }
-//
-//            return ((IFluidFilterProvider) filterStack.getItem()).getInputFluidFilter(filterStack, tile, handler);
-//        }
-//
-//        return null;
-//    }
-//
-//    @Override
-//    public boolean isTankConnectedToSide(Direction side) {
-//        return true;
-//    }
+	// @Override
+	// public boolean isFluidInput(Direction side) {
+	// return true;
+	// }
+	//
+	// @Override
+	// public IFluidFilter getInputFluidFilterForSide(Direction side) {
+	// TileEntity tile = getWorld().getTileEntity(pos.offset(side));
+	// if (tile != null &&
+	// tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side)) {
+	// IFluidHandler handler =
+	// tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side);
+	// ItemStack filterStack = this.getFilterStack(side);
+	// if (filterStack == null || !(filterStack.getItem() instanceof
+	// IFluidFilterProvider)) {
+	// return null;
+	// }
+	//
+	// return ((IFluidFilterProvider)
+	// filterStack.getItem()).getInputFluidFilter(filterStack, tile, handler);
+	// }
+	//
+	// return null;
+	// }
+	//
+	// @Override
+	// public boolean isTankConnectedToSide(Direction side) {
+	// return true;
+	// }
 }

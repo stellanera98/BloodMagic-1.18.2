@@ -46,60 +46,61 @@ import wayoftime.bloodmagic.util.Constants;
 import wayoftime.bloodmagic.util.GhostItemHelper;
 import wayoftime.bloodmagic.util.Utils;
 
-public class ItemFluidRouterFilter extends Item implements MenuProvider, IRoutingFilterProvider {
+public class ItemFluidRouterFilter extends Item implements MenuProvider, IRoutingFilterProvider
+{
 
     public ItemFluidRouterFilter()
     {
-		super(new Item.Properties().stacksTo(16).tab(BloodMagic.TAB));
+        super(new Item.Properties().stacksTo(16).tab(BloodMagic.TAB));
     }
 
-	@OnlyIn(Dist.CLIENT)
-	public void appendHoverText(ItemStack filterStack, Level world, List<Component> tooltip, TooltipFlag flag)
-	{
-		tooltip.add(new TranslatableComponent("tooltip.bloodmagic.fluidfilter.desc").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.GRAY));
+    @OnlyIn(Dist.CLIENT)
+    public void appendHoverText(ItemStack filterStack, Level world, List<Component> tooltip, TooltipFlag flag)
+    {
+        tooltip.add(new TranslatableComponent("tooltip.bloodmagic.fluidfilter.desc").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.GRAY));
 
-		if (filterStack.getTag() == null)
-		{
-			return;
-		}
+        if (filterStack.getTag() == null)
+        {
+            return;
+        }
 
-		int whitelistState = this.getCurrentButtonState(filterStack, Constants.BUTTONID.BLACKWHITELIST, 0);
-		boolean isWhitelist = whitelistState == 0;
+        int whitelistState = this.getCurrentButtonState(filterStack, Constants.BUTTONID.BLACKWHITELIST, 0);
+        boolean isWhitelist = whitelistState == 0;
 
-		if (isWhitelist)
-		{
-			tooltip.add(new TranslatableComponent("tooltip.bloodmagic.filter.whitelist").withStyle(ChatFormatting.GRAY));
-		} else
-		{
-			tooltip.add(new TranslatableComponent("tooltip.bloodmagic.filter.blacklist").withStyle(ChatFormatting.GRAY));
-		}
+        if (isWhitelist)
+        {
+            tooltip.add(new TranslatableComponent("tooltip.bloodmagic.filter.whitelist").withStyle(ChatFormatting.GRAY));
+        } else
+        {
+            tooltip.add(new TranslatableComponent("tooltip.bloodmagic.filter.blacklist").withStyle(ChatFormatting.GRAY));
+        }
 
-		ItemInventory inv = new InventoryFilter(filterStack);
-		for (int i = 0; i < inv.getContainerSize(); i++)
-		{
-			ItemStack stack = inv.getItem(i);
-			if (stack.isEmpty())
-			{
-				continue;
-			}
+        ItemInventory inv = new InventoryFilter(filterStack);
+        for (int i = 0; i < inv.getContainerSize(); i++)
+        {
+            ItemStack stack = inv.getItem(i);
+            if (stack.isEmpty())
+            {
+                continue;
+            }
 
             FluidStack fluidStack = FluidUtil.getFluidContained(stack).get();
-			if (isWhitelist)
-			{
-				int amount = GhostItemHelper.getItemGhostAmount(stack);
-				if (amount > 0)
-				{
-					tooltip.add(new TranslatableComponent("tooltip.bloodmagic.filter.count", amount, fluidStack.getDisplayName()));
-				} else
-				{
-					tooltip.add(new TranslatableComponent("tooltip.bloodmagic.filter.all", fluidStack.getDisplayName()));
-				}
-			} else
-			{
-				tooltip.add(fluidStack.getDisplayName());
-			}
-		}
-	}
+            if (isWhitelist)
+            {
+                int amount = GhostItemHelper.getItemGhostAmount(stack);
+                if (amount > 0)
+                {
+                    tooltip.add(new TranslatableComponent("tooltip.bloodmagic.filter.count", amount, fluidStack.getDisplayName()));
+                } else
+                {
+                    tooltip.add(new TranslatableComponent("tooltip.bloodmagic.filter.all", fluidStack.getDisplayName()));
+                }
+            } else
+            {
+                tooltip.add(fluidStack.getDisplayName());
+            }
+        }
+    }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand)
@@ -240,13 +241,14 @@ public class ItemFluidRouterFilter extends Item implements MenuProvider, IRoutin
         int currentState = getCurrentButtonState(filterStack, buttonKey, ghostItemSlot);
         if (buttonKey.equals(Constants.BUTTONID.BLACKWHITELIST))
         {
-            switch (currentState) {
-                case 1:
-                    componentList.add(new TranslatableComponent("filter.bloodmagic.blacklist"));
-                    break;
-            
-                default:
-                    componentList.add(new TranslatableComponent("filter.bloodmagic.whitelist"));
+            switch (currentState)
+            {
+            case 1:
+                componentList.add(new TranslatableComponent("filter.bloodmagic.blacklist"));
+                break;
+
+            default:
+                componentList.add(new TranslatableComponent("filter.bloodmagic.whitelist"));
             }
         }
 
@@ -285,12 +287,13 @@ public class ItemFluidRouterFilter extends Item implements MenuProvider, IRoutin
     {
         if (buttonKey.equals(Constants.BUTTONID.BLACKWHITELIST))
         {
-            switch (currentButtonState) {
-                case 1:
-                    return Pair.of(176, 20);
-            
-                default:
-                    return Pair.of(176, 0);
+            switch (currentButtonState)
+            {
+            case 1:
+                return Pair.of(176, 20);
+
+            default:
+                return Pair.of(176, 0);
             }
         }
 
@@ -310,13 +313,14 @@ public class ItemFluidRouterFilter extends Item implements MenuProvider, IRoutin
         if (buttonKey.equals(Constants.BUTTONID.BLACKWHITELIST))
         {
             int nextState = 0;
-            switch (currentButtonState) {
-                case 0:
-                    nextState = 1;
-                    break;
-            
-                default:
-                    nextState = 0;
+            switch (currentButtonState)
+            {
+            case 0:
+                nextState = 1;
+                break;
+
+            default:
+                nextState = 0;
             }
 
             tag.putInt(Constants.NBT.BLACKWHITELIST, nextState);
@@ -357,16 +361,16 @@ public class ItemFluidRouterFilter extends Item implements MenuProvider, IRoutin
         return new TextComponent("Fluid Filter");
     }
 
-	@Override
-	public IRoutingFilter<FluidStack> getFilterTypeFromConfig(ItemStack filterStack)
-	{
-		int state = getCurrentButtonState(filterStack, Constants.BUTTONID.BLACKWHITELIST, 0);
-		if (state == 1)
-		{
-			return new BlacklistFluidFilter();
-		}
+    @Override
+    public IRoutingFilter<FluidStack> getFilterTypeFromConfig(ItemStack filterStack)
+    {
+        int state = getCurrentButtonState(filterStack, Constants.BUTTONID.BLACKWHITELIST, 0);
+        if (state == 1)
+        {
+            return new BlacklistFluidFilter();
+        }
 
-		return new BasicFluidFilter();
-	}
-    
+        return new BasicFluidFilter();
+    }
+
 }
