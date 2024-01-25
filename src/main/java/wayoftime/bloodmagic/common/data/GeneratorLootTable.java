@@ -690,7 +690,23 @@ public class GeneratorLootTable extends LootTableProvider
 			dropSelf(BloodMagicBlocks.INCENSE_ALTAR.get());
 //			registerNoDropLootTable(BloodMagicBlocks.RAW_CRYSTAL_BLOCK.get());
 			dropOther(BloodMagicBlocks.NETHER_SOIL.get(), Blocks.NETHERRACK);
-			dropSelf(BloodMagicBlocks.BLOOD_TANK.get());
+
+            dropSelf(BloodMagicBlocks.BLOOD_TANK1.get());
+            dropSelf(BloodMagicBlocks.BLOOD_TANK2.get());
+            dropSelf(BloodMagicBlocks.BLOOD_TANK3.get());
+            dropSelf(BloodMagicBlocks.BLOOD_TANK4.get());
+            dropSelf(BloodMagicBlocks.BLOOD_TANK5.get());
+            dropSelf(BloodMagicBlocks.BLOOD_TANK6.get());
+            dropSelf(BloodMagicBlocks.BLOOD_TANK7.get());
+            dropSelf(BloodMagicBlocks.BLOOD_TANK8.get());
+            dropSelf(BloodMagicBlocks.BLOOD_TANK9.get());
+            dropSelf(BloodMagicBlocks.BLOOD_TANK10.get());
+            dropSelf(BloodMagicBlocks.BLOOD_TANK11.get());
+            dropSelf(BloodMagicBlocks.BLOOD_TANK12.get());
+            dropSelf(BloodMagicBlocks.BLOOD_TANK13.get());
+            dropSelf(BloodMagicBlocks.BLOOD_TANK14.get());
+            dropSelf(BloodMagicBlocks.BLOOD_TANK15.get());
+            dropSelf(BloodMagicBlocks.BLOOD_TANK16.get());
 
 			registerDropCrystalsLootTable(BloodMagicBlocks.RAW_CRYSTAL_BLOCK.get(), BloodMagicItems.RAW_CRYSTAL.get());
 			registerDropCrystalsLootTable(BloodMagicBlocks.CORROSIVE_CRYSTAL_BLOCK.get(), BloodMagicItems.CORROSIVE_CRYSTAL.get());

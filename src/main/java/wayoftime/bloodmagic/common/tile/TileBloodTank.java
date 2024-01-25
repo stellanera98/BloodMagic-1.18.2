@@ -6,7 +6,6 @@ import org.jetbrains.annotations.Nullable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -29,8 +28,13 @@ public class TileBloodTank extends TileBase implements IFluidHandler
 
     public TileBloodTank(BlockEntityType<?> type, BlockPos pos, BlockState state)
     {
+        this(type, pos, state, 0);
+    }
+
+    public TileBloodTank(BlockEntityType<?> type, BlockPos pos, BlockState state, int tier)
+    {
         super(type, pos, state);
-        capacity = FluidAttributes.BUCKET_VOLUME * 16;
+        capacity = FluidAttributes.BUCKET_VOLUME * 16 * (int) Math.pow(2, tier);
         internalFluid = new FluidTank(capacity);
         this.initializeFluidCapabilities();
     }

@@ -29,7 +29,6 @@
     "bloodmagic:demoncrucible",
     "bloodmagic:demoncrystallizer",
     "bloodmagic:demonpylon",
-    "bloodmagic:bloodtank",
     "bloodmagic:rawdemoncrystal",
     "bloodmagic:corrosivedemoncrystal",
     "bloodmagic:ethereal_mimic",
@@ -79,6 +78,22 @@
     "bloodmagic:spikes",
     "bloodmagic:dungeon_spike_trap",
     "bloodmagic:inversion_pillar_cap",
-    "bloodmagic:inversion_pillar"
+    "bloodmagic:inversion_pillar",
+    "bloodmagic:bloodtank1",
+    "bloodmagic:bloodtank2",
+    "bloodmagic:bloodtank3",
+    "bloodmagic:bloodtank4",
+    "bloodmagic:bloodtank5",
+    "bloodmagic:bloodtank6",
+    "bloodmagic:bloodtank7",
+    "bloodmagic:bloodtank8",
+    "bloodmagic:bloodtank9",
+    "bloodmagic:bloodtank10",
+    "bloodmagic:bloodtank11",
+    "bloodmagic:bloodtank12",
+    "bloodmagic:bloodtank13",
+    "bloodmagic:bloodtank14",
+    "bloodmagic:bloodtank15",
+    "bloodmagic:bloodtank16"
   ]
 }

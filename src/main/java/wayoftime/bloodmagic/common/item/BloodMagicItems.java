@@ -119,7 +119,23 @@ public class BloodMagicItems
 	public static final RegistryObject<Item> BLOOD_ALTAR_ITEM = ITEMS.register("altar", () -> new BlockItem(BloodMagicBlocks.BLOOD_ALTAR.get(), new Item.Properties().tab(BloodMagic.TAB)));
 	public static final RegistryObject<Item> ALCHEMY_TABLE_ITEM = ITEMS.register("alchemytable", () -> new ItemBlockAlchemyTable(BloodMagicBlocks.ALCHEMY_TABLE.get(), new Item.Properties().tab(BloodMagic.TAB)));
 	public static final RegistryObject<Item> INCENSE_ALTAR_ITEM = ITEMS.register("incensealtar", () -> new BlockItem(BloodMagicBlocks.INCENSE_ALTAR.get(), new Item.Properties().tab(BloodMagic.TAB)));
-	public static final RegistryObject<Item> BLOOD_TANK_ITEM = ITEMS.register("bloodtank", () -> new BlockItem(BloodMagicBlocks.BLOOD_TANK.get(), new Item.Properties().tab(BloodMagic.TAB)));
+
+	public static final RegistryObject<Item> BLOOD_TANK_ITEM1 = ITEMS.register("bloodtank1", () -> new BlockItem(BloodMagicBlocks.BLOOD_TANK1.get(), new Item.Properties().tab(BloodMagic.TAB)));
+	public static final RegistryObject<Item> BLOOD_TANK_ITEM2 = ITEMS.register("bloodtank2", () -> new BlockItem(BloodMagicBlocks.BLOOD_TANK2.get(), new Item.Properties().tab(BloodMagic.TAB)));
+	public static final RegistryObject<Item> BLOOD_TANK_ITEM3 = ITEMS.register("bloodtank3", () -> new BlockItem(BloodMagicBlocks.BLOOD_TANK3.get(), new Item.Properties().tab(BloodMagic.TAB)));
+	public static final RegistryObject<Item> BLOOD_TANK_ITEM4 = ITEMS.register("bloodtank4", () -> new BlockItem(BloodMagicBlocks.BLOOD_TANK4.get(), new Item.Properties().tab(BloodMagic.TAB)));
+	public static final RegistryObject<Item> BLOOD_TANK_ITEM5 = ITEMS.register("bloodtank5", () -> new BlockItem(BloodMagicBlocks.BLOOD_TANK5.get(), new Item.Properties().tab(BloodMagic.TAB)));
+	public static final RegistryObject<Item> BLOOD_TANK_ITEM6 = ITEMS.register("bloodtank6", () -> new BlockItem(BloodMagicBlocks.BLOOD_TANK6.get(), new Item.Properties().tab(BloodMagic.TAB)));
+	public static final RegistryObject<Item> BLOOD_TANK_ITEM7 = ITEMS.register("bloodtank7", () -> new BlockItem(BloodMagicBlocks.BLOOD_TANK7.get(), new Item.Properties().tab(BloodMagic.TAB)));
+	public static final RegistryObject<Item> BLOOD_TANK_ITEM8 = ITEMS.register("bloodtank8", () -> new BlockItem(BloodMagicBlocks.BLOOD_TANK8.get(), new Item.Properties().tab(BloodMagic.TAB)));
+	public static final RegistryObject<Item> BLOOD_TANK_ITEM9 = ITEMS.register("bloodtank9", () -> new BlockItem(BloodMagicBlocks.BLOOD_TANK9.get(), new Item.Properties().tab(BloodMagic.TAB)));
+	public static final RegistryObject<Item> BLOOD_TANK_ITEM10 = ITEMS.register("bloodtank10", () -> new BlockItem(BloodMagicBlocks.BLOOD_TANK10.get(), new Item.Properties().tab(BloodMagic.TAB)));
+	public static final RegistryObject<Item> BLOOD_TANK_ITEM11 = ITEMS.register("bloodtank11", () -> new BlockItem(BloodMagicBlocks.BLOOD_TANK11.get(), new Item.Properties().tab(BloodMagic.TAB)));
+	public static final RegistryObject<Item> BLOOD_TANK_ITEM12 = ITEMS.register("bloodtank12", () -> new BlockItem(BloodMagicBlocks.BLOOD_TANK12.get(), new Item.Properties().tab(BloodMagic.TAB)));
+	public static final RegistryObject<Item> BLOOD_TANK_ITEM13 = ITEMS.register("bloodtank13", () -> new BlockItem(BloodMagicBlocks.BLOOD_TANK13.get(), new Item.Properties().tab(BloodMagic.TAB)));
+	public static final RegistryObject<Item> BLOOD_TANK_ITEM14 = ITEMS.register("bloodtank14", () -> new BlockItem(BloodMagicBlocks.BLOOD_TANK14.get(), new Item.Properties().tab(BloodMagic.TAB)));
+	public static final RegistryObject<Item> BLOOD_TANK_ITEM15 = ITEMS.register("bloodtank15", () -> new BlockItem(BloodMagicBlocks.BLOOD_TANK15.get(), new Item.Properties().tab(BloodMagic.TAB)));
+	public static final RegistryObject<Item> BLOOD_TANK_ITEM16 = ITEMS.register("bloodtank16", () -> new BlockItem(BloodMagicBlocks.BLOOD_TANK16.get(), new Item.Properties().tab(BloodMagic.TAB)));
 
 	public static final RegistryObject<Item> TELEPOSER_ITEM = ITEMS.register("teleposer", () -> new BlockItem(BloodMagicBlocks.TELEPOSER.get(), new Item.Properties().tab(BloodMagic.TAB)));
 

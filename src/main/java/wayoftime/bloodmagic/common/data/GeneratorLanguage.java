@@ -546,7 +546,23 @@ public class GeneratorLanguage extends LanguageProvider
 		addBlock(BloodMagicBlocks.ACCELERATION_RUNE_2, "Reinforced Acceleration Rune");
 		addBlock(BloodMagicBlocks.CHARGING_RUNE_2, "Reinforced Charging Rune");
 
-		addBlock(BloodMagicBlocks.BLOOD_TANK, "Blood Tank");
+		addBlock(BloodMagicBlocks.BLOOD_TANK1, "Tier 1 Blood Tank");
+		addBlock(BloodMagicBlocks.BLOOD_TANK2, "Tier 2 Blood Tank");
+		addBlock(BloodMagicBlocks.BLOOD_TANK3, "Tier 3 Blood Tank");
+		addBlock(BloodMagicBlocks.BLOOD_TANK4, "Tier 4 Blood Tank");
+		addBlock(BloodMagicBlocks.BLOOD_TANK5, "Tier 5 Blood Tank");
+		addBlock(BloodMagicBlocks.BLOOD_TANK6, "Tier 6 Blood Tank");
+		addBlock(BloodMagicBlocks.BLOOD_TANK7, "Tier 7 Blood Tank");
+		addBlock(BloodMagicBlocks.BLOOD_TANK8, "Tier 8 Blood Tank");
+		addBlock(BloodMagicBlocks.BLOOD_TANK9, "Tier 9 Blood Tank");
+		addBlock(BloodMagicBlocks.BLOOD_TANK10, "Tier 10 Blood Tank");
+		addBlock(BloodMagicBlocks.BLOOD_TANK11, "Tier 11 Blood Tank");
+		addBlock(BloodMagicBlocks.BLOOD_TANK12, "Tier 12 Blood Tank");
+		addBlock(BloodMagicBlocks.BLOOD_TANK13, "Tier 13 Blood Tank");
+		addBlock(BloodMagicBlocks.BLOOD_TANK14, "Tier 14 Blood Tank");
+		addBlock(BloodMagicBlocks.BLOOD_TANK15, "Tier 15 Blood Tank");
+		addBlock(BloodMagicBlocks.BLOOD_TANK16, "Tier 16 Blood Tank");
+
 		addBlock(BloodMagicBlocks.BLOOD_ALTAR, "Blood Altar");
 		addBlock(BloodMagicBlocks.SOUL_FORGE, "Hellfire Forge");
 		addBlock(BloodMagicBlocks.BLANK_RITUAL_STONE, "Ritual Stone");

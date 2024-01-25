@@ -100,7 +100,22 @@ public class BloodMagicBlocks
 	public static final RegistryObject<Block> VENGEFUL_CRYSTAL_BLOCK = BLOCKS.register("vengefuldemoncrystal", () -> new BlockDemonCrystal(EnumDemonWillType.VENGEFUL));
 	public static final RegistryObject<Block> STEADFAST_CRYSTAL_BLOCK = BLOCKS.register("steadfastdemoncrystal", () -> new BlockDemonCrystal(EnumDemonWillType.STEADFAST));
 
-	public static final RegistryObject<Block> BLOOD_TANK = BLOCKS.register("bloodtank", () -> new BlockBloodTank());
+	public static final RegistryObject<Block> BLOOD_TANK1 = BLOCKS.register("bloodtank1", () -> new BlockBloodTank(0));
+	public static final RegistryObject<Block> BLOOD_TANK2 = BLOCKS.register("bloodtank2", () -> new BlockBloodTank(1));
+	public static final RegistryObject<Block> BLOOD_TANK3 = BLOCKS.register("bloodtank3", () -> new BlockBloodTank(2));
+	public static final RegistryObject<Block> BLOOD_TANK4 = BLOCKS.register("bloodtank4", () -> new BlockBloodTank(3));
+	public static final RegistryObject<Block> BLOOD_TANK5 = BLOCKS.register("bloodtank5", () -> new BlockBloodTank(4));
+	public static final RegistryObject<Block> BLOOD_TANK6 = BLOCKS.register("bloodtank6", () -> new BlockBloodTank(5));
+	public static final RegistryObject<Block> BLOOD_TANK7 = BLOCKS.register("bloodtank7", () -> new BlockBloodTank(6));
+	public static final RegistryObject<Block> BLOOD_TANK8 = BLOCKS.register("bloodtank8", () -> new BlockBloodTank(7));
+	public static final RegistryObject<Block> BLOOD_TANK9 = BLOCKS.register("bloodtank9", () -> new BlockBloodTank(8));
+	public static final RegistryObject<Block> BLOOD_TANK10 = BLOCKS.register("bloodtank10", () -> new BlockBloodTank(9));
+	public static final RegistryObject<Block> BLOOD_TANK11 = BLOCKS.register("bloodtank11", () -> new BlockBloodTank(10));
+	public static final RegistryObject<Block> BLOOD_TANK12 = BLOCKS.register("bloodtank12", () -> new BlockBloodTank(11));
+	public static final RegistryObject<Block> BLOOD_TANK13 = BLOCKS.register("bloodtank13", () -> new BlockBloodTank(12));
+	public static final RegistryObject<Block> BLOOD_TANK14 = BLOCKS.register("bloodtank14", () -> new BlockBloodTank(13));
+	public static final RegistryObject<Block> BLOOD_TANK15 = BLOCKS.register("bloodtank15", () -> new BlockBloodTank(14));
+	public static final RegistryObject<Block> BLOOD_TANK16 = BLOCKS.register("bloodtank16", () -> new BlockBloodTank(15));
 
 	public static final RegistryObject<Block> ROUTING_NODE_BLOCK = BLOCKS.register("itemroutingnode", () -> new BlockItemRoutingNode());
 	public static final RegistryObject<Block> INPUT_ROUTING_NODE_BLOCK = BLOCKS.register("inputroutingnode", () -> new BlockInputRoutingNode());

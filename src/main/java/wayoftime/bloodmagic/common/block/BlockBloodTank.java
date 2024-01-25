@@ -25,15 +25,18 @@ public class BlockBloodTank extends Block implements EntityBlock
 {
 	protected static final VoxelShape BODY = Block.box(4, 0, 4, 12, 13, 12);
 
-    public BlockBloodTank()
+    private int tier;
+
+    public BlockBloodTank(int tier)
     {
         super(Properties.of(Material.STONE).strength(2.0f, 5.0f).sound(SoundType.STONE).requiresCorrectToolForDrops());
+        this.tier = tier;
     }
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state)
     {
-        return new TileBloodTank(BloodMagicTileEntities.BLOOD_TANK_TYPE.get(), pos, state);
+        return new TileBloodTank(BloodMagicTileEntities.BLOOD_TANK_TYPE.get(), pos, state, tier);
     }
 
     @Override
