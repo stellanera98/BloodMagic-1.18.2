@@ -30,7 +30,7 @@ public class BloodTankTile extends BlockEntity {
     };
 
     public BloodTankTile(BlockPos pos, BlockState state) {
-        super(BloodMagicTiles.BLOOD_TANK_TYPE.get(), pos, state);
+        super(BMTiles.BLOOD_TANK_TYPE.get(), pos, state);
     }
 
     private void updateCapacity() {

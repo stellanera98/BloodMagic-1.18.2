@@ -4,8 +4,8 @@ import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.fluids.FluidType;
 import wayoftime.bloodmagic.BloodMagic;
-import wayoftime.bloodmagic.block.BloodMagicBlocks;
-import wayoftime.bloodmagic.fluid.BloodMagicFluids;
+import wayoftime.bloodmagic.block.BMBlocks;
+import wayoftime.bloodmagic.fluid.BMFluids;
 
 public class BMLanguageProvider extends LanguageProvider {
     public BMLanguageProvider(PackOutput output, String locale) {
@@ -14,19 +14,21 @@ public class BMLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        add(BloodMagicFluids.LIFE_ESSENCE_TYPE.get(), "Life Essence");
-        add(BloodMagicFluids.LIFE_ESSENCE_BUCKET.get(), "Life Essence Bucket");
-        add(BloodMagicFluids.LIFE_ESSENCE_BLOCK.get(), "Life Essence");
+        add(BMFluids.LIFE_ESSENCE_TYPE.get(), "Life Essence");
+        add(BMFluids.LIFE_ESSENCE_BUCKET.get(), "Life Essence Bucket");
+        add(BMFluids.LIFE_ESSENCE_BLOCK.get(), "Life Essence");
 
-        add(BloodMagicFluids.DOUBT_TYPE.get(), "Liquid Doubt");
-        add(BloodMagicFluids.DOUBT_BUCKET.get(), "Doubt Bucket");
-        add(BloodMagicFluids.DOUBT_BLOCK.get(), "Liquid Doubt");
+        add(BMFluids.DOUBT_TYPE.get(), "Liquid Doubt");
+        add(BMFluids.DOUBT_BUCKET.get(), "Doubt Bucket");
+        add(BMFluids.DOUBT_BLOCK.get(), "Liquid Doubt");
 
-        add(BloodMagicBlocks.BLOOD_TANK.block().get(), "Blood Tank");
+        add(BMBlocks.BLOOD_TANK.block().get(), "Blood Tank");
         addTooltip("container_tier", "Tier: %d");
         addTooltip("container_tier_missing", "Tier missing!");
         addTooltip("fluid_content", "%s: %d");
         addTooltip("fluid_content_empty", "Empty");
+
+        addTooltip("save_for_decoration", "Save for decoration");
     }
 
     public void add(FluidType type, String name) {

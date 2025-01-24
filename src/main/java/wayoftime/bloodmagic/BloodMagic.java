@@ -3,12 +3,15 @@ package wayoftime.bloodmagic;
 import com.mojang.logging.LogUtils;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.event.server.ServerStoppedEvent;
 import org.slf4j.Logger;
-import wayoftime.bloodmagic.block.BloodMagicBlocks;
-import wayoftime.bloodmagic.blockentity.BloodMagicTiles;
+import wayoftime.bloodmagic.block.BMBlocks;
+import wayoftime.bloodmagic.blockentity.BMTiles;
 import wayoftime.bloodmagic.datacomponent.BMDataComponents;
-import wayoftime.bloodmagic.fluid.BloodMagicFluids;
+import wayoftime.bloodmagic.datamap.BMDataMaps;
+import wayoftime.bloodmagic.fluid.BMFluids;
 import wayoftime.bloodmagic.recipe.BMRecipes;
+import wayoftime.bloodmagic.registry.BMRegistries;
 
 
 @Mod(BloodMagic.MODID)
@@ -18,9 +21,11 @@ public class BloodMagic {
 
     public BloodMagic(IEventBus modBus) {
         BMDataComponents.register(modBus);
-        BloodMagicFluids.register(modBus);
-        BloodMagicBlocks.register(modBus);
-        BloodMagicTiles.register(modBus);
+        BMFluids.register(modBus);
+        BMBlocks.register(modBus);
+        BMTiles.register(modBus);
         BMRecipes.register(modBus);
+        BMDataMaps.register(modBus);
+        BMRegistries.register(modBus);
     }
 }

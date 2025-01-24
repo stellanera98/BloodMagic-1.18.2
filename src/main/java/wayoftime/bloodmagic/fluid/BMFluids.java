@@ -23,7 +23,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import wayoftime.bloodmagic.BloodMagic;
 
-public class BloodMagicFluids {
+public class BMFluids {
     public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(NeoForgeRegistries.FLUID_TYPES, BloodMagic.MODID);
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(BuiltInRegistries.FLUID, BloodMagic.MODID);
     public static final DeferredRegister<Item> BUCKETS = DeferredRegister.createItems(BloodMagic.MODID);
@@ -104,6 +104,6 @@ public class BloodMagicFluids {
         FLUIDS.register(modBus);
         BUCKETS.register(modBus);
         SOURCE_BLOCKS.register(modBus);
-        modBus.addListener(BloodMagicFluids::registerClientExtentions);
+        modBus.addListener(BMFluids::registerClientExtentions);
     }
 }

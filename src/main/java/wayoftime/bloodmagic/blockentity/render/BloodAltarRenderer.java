@@ -1,4 +1,4 @@
-/*package wayoftime.bloodmagic.client.render.block;
+package wayoftime.bloodmagic.blockentity.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -19,12 +19,9 @@ import net.neoforged.neoforge.client.RenderTypeHelper;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
-import wayoftime.bloodmagic.BloodMagic;
-import wayoftime.bloodmagic.common.fluid.BloodMagicFluids;
-import wayoftime.bloodmagic.common.tile.BloodAltarTile;
-import wayoftime.bloodmagic.util.RenderHelper;
-
-import java.util.Objects;
+import wayoftime.bloodmagic.blockentity.BloodAltarTile;
+import wayoftime.bloodmagic.fluid.BMFluids;
+import wayoftime.bloodmagic.util.helper.RenderHelper;
 
 public class BloodAltarRenderer implements BlockEntityRenderer<BloodAltarTile> {
 
@@ -57,8 +54,8 @@ public class BloodAltarRenderer implements BlockEntityRenderer<BloodAltarTile> {
 
     private void renderFluid(float fluidLevel, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         Minecraft minecraft = Minecraft.getInstance();
-        IClientFluidTypeExtensions fluidClientInfo = IClientFluidTypeExtensions.of(BloodMagicFluids.LIFE_ESSENCE_FLUID_TYPE.get());
-        RenderType blockRenderType = ItemBlockRenderTypes.getRenderLayer(BloodMagicFluids.LIFE_ESSENCE_FLUID.get().defaultFluidState());
+        IClientFluidTypeExtensions fluidClientInfo = IClientFluidTypeExtensions.of(BMFluids.LIFE_ESSENCE_TYPE.get());
+        RenderType blockRenderType = ItemBlockRenderTypes.getRenderLayer(BMFluids.LIFE_ESSENCE_SOURCE.get().defaultFluidState());
         TextureAtlasSprite sprite = minecraft.getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(fluidClientInfo.getStillTexture());
         int color = fluidClientInfo.getTintColor();
 
@@ -88,5 +85,3 @@ public class BloodAltarRenderer implements BlockEntityRenderer<BloodAltarTile> {
         poseStack.popPose();
     }
 }
-
- */

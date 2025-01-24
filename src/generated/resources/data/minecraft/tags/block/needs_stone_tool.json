@@ -1,5 +1,17 @@
 {
   "values": [
-    "bloodmagic:blood_tank"
+    "bloodmagic:blood_tank",
+    "bloodmagic:blood_altar",
+    "bloodmagic:rune_blank",
+    "bloodmagic:rune_efficiency",
+    "bloodmagic:rune_sacrifice",
+    "bloodmagic:rune_sacrifice_self",
+    "bloodmagic:rune_speed",
+    "bloodmagic:rune_acceleration",
+    "bloodmagic:rune_dislocation",
+    "bloodmagic:rune_capacity",
+    "bloodmagic:rune_capacity_augmented",
+    "bloodmagic:rune_orb",
+    "bloodmagic:rune_charging"
   ]
 }

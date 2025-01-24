@@ -9,5 +9,6 @@
   "tooltip.bloodmagic.container_tier": "Tier: %d",
   "tooltip.bloodmagic.container_tier_missing": "Tier missing!",
   "tooltip.bloodmagic.fluid_content": "%s: %d",
-  "tooltip.bloodmagic.fluid_content_empty": "Empty"
+  "tooltip.bloodmagic.fluid_content_empty": "Empty",
+  "tooltip.bloodmagic.save_for_decoration": "Save for decoration"
 }
