@@ -8,4 +8,5 @@ gradle
 # general
 build
 run
+run-data
 src/generated/resources/.cache
