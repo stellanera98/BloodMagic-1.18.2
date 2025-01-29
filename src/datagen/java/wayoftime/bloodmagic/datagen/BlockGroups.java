@@ -22,4 +22,8 @@ public class BlockGroups {
             BMBlocks.RUNE_2_CAPACITY.block().getKey(), BMBlocks.RUNE_2_CAPACITY_AUGMENTED.block().getKey(),
             BMBlocks.RUNE_2_ORB.block().getKey(), BMBlocks.RUNE_2_CHARGING.block().getKey()
     );
+
+    public static List<ResourceKey<Block>> BLOODSTONE = List.of(
+            BMBlocks.BLOODSTONE.block().getKey(), BMBlocks.BLOODSTONE_BRICK.block().getKey()
+    );
 }

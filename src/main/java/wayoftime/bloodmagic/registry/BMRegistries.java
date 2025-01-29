@@ -4,8 +4,10 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import wayoftime.bloodmagic.BloodMagic;
+import wayoftime.bloodmagic.util.AltarUtil;
 
 public class BMRegistries {
     public static final ResourceKey<Registry<AltarTier>> ALTAR_TIER_KEY = ResourceKey.createRegistryKey(bm("altar_tier"));
@@ -20,5 +22,6 @@ public class BMRegistries {
 
     public static void register(IEventBus modBus) {
         modBus.addListener(BMRegistries::registerRegistries);
+        NeoForge.EVENT_BUS.addListener(AltarUtil::onDataPackLoaded);
     }
 }

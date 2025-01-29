@@ -33,7 +33,7 @@ public class BMTiles {
         event.registerBlockEntity(
                 Capabilities.FluidHandler.BLOCK,
                 BLOOD_ALTAR_TYPE.get(),
-                BloodAltarTile::getFluidHandler
+                (tile, side) -> tile
         );
     }
 

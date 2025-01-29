@@ -5,20 +5,23 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 import wayoftime.bloodmagic.BloodMagic;
+import wayoftime.bloodmagic.fluid.BMFluids;
 import wayoftime.bloodmagic.util.RuneType;
-import wayoftime.bloodmagic.util.helper.AltarUtil;
+import wayoftime.bloodmagic.util.AltarUtil;
 
 import java.util.Map;
 
-public class BloodAltarTile extends BlockEntity {
+public class BloodAltarTile extends BlockEntity implements IFluidHandler {
     public int tier = 0;
     public int ticks;
     public int inputTank = 0;
@@ -33,45 +36,66 @@ public class BloodAltarTile extends BlockEntity {
         }
     };
 
-    private float capacityMod;
-    private int tickRate;
-    private float consumptionMod;
-    private float sacrificeMod;
-    private float selfSacMod;
-    private float dislocationMod;
-    private float orbCapMod;
-    private float chargeAmountMod;
-    private float chargeCapMod;
-    private float efficiencyMod;
-    private Map<RuneType, Integer> currentUpgrades;
+    private float capacityMod = 1;
+    private int tickRate = 20;
+    private float consumptionMod = 1;
+    private float sacrificeMod = 1;
+    private float selfSacMod = 1;
+    private float dislocationMod = 1;
+    private float orbCapMod = 1;
+    private float chargeAmountMod = 1;
+    private float chargeCapMod = 1;
+    private float efficiencyMod = 1;
 
     public BloodAltarTile(BlockPos pos, BlockState blockState) {
         super(BMTiles.BLOOD_ALTAR_TYPE.get(), pos, blockState);
     }
 
     public void calculateStats(Map<RuneType, Integer> upgrades) {
-        capacityMod = (float) ((1D + 0.2D * upgrades.get(RuneType.CAPACITY) * Math.pow(1.075, upgrades.get(RuneType.AUGMENTED_CAPACITY))));
-        tickRate = Math.max(1, 20 - upgrades.get(RuneType.ACCELERATION));
-        consumptionMod = 1F + 0.2F * upgrades.get(RuneType.SPEED);
-        sacrificeMod = 1F + 0.1F * upgrades.get(RuneType.SACRIFICE);
-        selfSacMod = 1F + 0.1F * upgrades.get(RuneType.SELF_SACRIFICE);
-        dislocationMod = (float) Math.pow(1.2, upgrades.get(RuneType.DISPLACEMENT));
-        orbCapMod = 1F + 0.2F * upgrades.get(RuneType.ORB);
-        chargeAmountMod = (10 * upgrades.get(RuneType.CHARGING) * (1 + consumptionMod/2));
-        chargeCapMod = (float) Math.max(0.5 * capacityMod, 1) * upgrades.get(RuneType.CHARGING);
-        efficiencyMod = (float) Math.pow(0.85, upgrades.get(RuneType.EFFICIENCY));
+        capacityMod = (float) ((1D + 0.2D * upgrades.getOrDefault(RuneType.CAPACITY, 0) * Math.pow(1.075, upgrades.getOrDefault(RuneType.AUGMENTED_CAPACITY, 0))));
+        tickRate = Math.max(1, 20 - upgrades.getOrDefault(RuneType.ACCELERATION, 0));
+        consumptionMod = 1F + 0.2F * upgrades.getOrDefault(RuneType.SPEED, 0);
+        sacrificeMod = 1F + 0.1F * upgrades.getOrDefault(RuneType.SACRIFICE, 0);
+        selfSacMod = 1F + 0.1F * upgrades.getOrDefault(RuneType.SELF_SACRIFICE, 0);
+        dislocationMod = (float) Math.pow(1.2, upgrades.getOrDefault(RuneType.DISPLACEMENT, 0));
+        orbCapMod = 1F + 0.2F * upgrades.getOrDefault(RuneType.ORB, 0);
+        chargeAmountMod = (10 * upgrades.getOrDefault(RuneType.CHARGING, 0) * (1 + consumptionMod/2));
+        chargeCapMod = (float) Math.max(0.5 * capacityMod, 1) * upgrades.getOrDefault(RuneType.CHARGING, 0);
+        efficiencyMod = (float) Math.pow(0.85, upgrades.getOrDefault(RuneType.EFFICIENCY, 0));
     }
 
-    public static void tick(Level level, BlockPos blockPos, BlockState blockState, BloodAltarTile tile) {
-        tile.ticks++;
-        if (tile.ticks % (20 * 5) == 0 && !level.isClientSide) {
-            int newTier = AltarUtil.getTier(level, blockPos);
-            Map<RuneType, Integer> newUpgrades = AltarUtil.getUpgrades(newTier);
+    public static void tick(Level level, BlockPos pos, BlockState state, BloodAltarTile tile) {
+        if (level.isClientSide) {
+            return;
         }
-    }
 
-    public @Nullable IFluidHandler getFluidHandler(@Nullable Direction direction) {
-        return new FluidTank(FluidType.BUCKET_VOLUME); // TODO make functional
+        tile.ticks++;
+        if (tile.ticks % (20 * 5) == 0) {
+            int newTier = AltarUtil.getTier(level, pos);
+            Map<RuneType, Integer> newUpgrades = AltarUtil.getUpgrades(newTier, level, pos);
+            tile.calculateStats(newUpgrades);
+            level.sendBlockUpdated(pos, state, state, Block.UPDATE_ALL);
+        }
+
+        if (tile.ticks % Math.max(tile.tickRate, 1) == 0) {
+            float ioAmount = 20F * tile.dislocationMod;
+            int input = (int) Math.min(tile.inputTank, ioAmount);
+            input = (int) Math.min(input, tile.getMainCapacity() - tile.mainTank);
+            tile.inputTank -= input;
+            tile.mainTank += input;
+
+            int output = (int) Math.min(tile.mainTank, ioAmount);
+            output = (int) Math.min(output, tile.getIOCapacity() - tile.outputTank);
+            tile.mainTank -= output;
+            tile.outputTank += output;
+
+            //if (!tile.isActive) {
+                int charge = (int) Math.min(tile.mainTank, tile.chargeAmountMod);
+                charge = (int) Math.min(charge, tile.getChargingCapacity() - tile.chargingTank);
+                tile.mainTank -= charge;
+                tile.chargingTank += charge;
+            //}
+        }
     }
 
     public int getMainCapacity() {
@@ -109,7 +133,6 @@ public class BloodAltarTile extends BlockEntity {
         chargingTank = tanks.getInt("charging");
 
         inv.deserializeNBT(registries, tag.getCompound("inventory"));
-        BloodMagic.LOGGER.debug("loaded {}", inv.getStackInSlot(0).getHoverName());
 
         this.tier = tag.getInt("tier");
     }
@@ -150,5 +173,77 @@ public class BloodAltarTile extends BlockEntity {
         CompoundTag tag = new CompoundTag();
         saveAdditional(tag, registries);
         return tag;
+    }
+
+    @Override
+    public void setChanged() {
+        super.setChanged();
+        this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), Block.UPDATE_ALL); // send to client
+    }
+
+    @Override
+    public int getTanks() {
+        return 3;
+    }
+
+    @Override
+    public FluidStack getFluidInTank(int tank) {
+        return switch (tank) {
+            case 0 -> new FluidStack(BMFluids.LIFE_ESSENCE_SOURCE, mainTank);
+            case 1 -> new FluidStack(BMFluids.LIFE_ESSENCE_SOURCE, inputTank);
+            case 2 -> new FluidStack(BMFluids.LIFE_ESSENCE_SOURCE, outputTank);
+            default -> FluidStack.EMPTY;
+        };
+    }
+
+    @Override
+    public int getTankCapacity(int tank) {
+        return switch (tank) {
+          case 0 -> getMainCapacity();
+          case 1,2 -> getIOCapacity();
+          default -> 0;
+        };
+    }
+
+    @Override
+    public boolean isFluidValid(int tank, FluidStack stack) {
+        return stack.is(BMFluids.LIFE_ESSENCE_TYPE.get());
+    }
+
+    @Override
+    public int fill(FluidStack resource, FluidAction action) {
+        if (!isFluidValid(0, resource)) {
+            return 0;
+        }
+        int canFill = Math.min(getIOCapacity() - inputTank, 0);
+        canFill = Math.max(canFill, resource.getAmount());
+
+        if (action.execute()) {
+            inputTank += canFill;
+            this.setChanged();
+        }
+
+        return canFill;
+    }
+
+    @Override
+    public FluidStack drain(FluidStack resource, FluidAction action) {
+        if (!isFluidValid(0, resource)) {
+            return FluidStack.EMPTY;
+        }
+
+        return drain(resource.getAmount(), action);
+    }
+
+    @Override
+    public FluidStack drain(int maxDrain, FluidAction action) {
+        int toDrain = Math.min(outputTank, maxDrain);
+
+        if (action.execute()) {
+            outputTank -= toDrain;
+            this.setChanged();
+        }
+
+        return new FluidStack(BMFluids.LIFE_ESSENCE_SOURCE, toDrain);
     }
 }

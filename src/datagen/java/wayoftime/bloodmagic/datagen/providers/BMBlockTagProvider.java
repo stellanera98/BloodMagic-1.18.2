@@ -31,7 +31,7 @@ public class BMBlockTagProvider extends BlockTagsProvider {
                 .add(Blocks.OCHRE_FROGLIGHT, Blocks.PEARLESCENT_FROGLIGHT, Blocks.VERDANT_FROGLIGHT);
 
         this.tag(BMTags.Blocks.T4_CAP)
-                .add(Blocks.POLISHED_GRANITE);
+                .addAll(BlockGroups.BLOODSTONE);
 
         this.tag(BMTags.Blocks.T5_CAP)
                 .add(Blocks.DIAMOND_BLOCK);
@@ -42,19 +42,21 @@ public class BMBlockTagProvider extends BlockTagsProvider {
         this.tag(BMTags.Blocks.PILLAR);
 
 
-        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(BMBlocks.BLOOD_TANK.block().get(), BMBlocks.BLOOD_ALTAR.block().get());
-        tag(BlockTags.NEEDS_STONE_TOOL)
+        this.tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(BMBlocks.BLOOD_TANK.block().get(), BMBlocks.BLOOD_ALTAR.block().get());
 
-        tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .addAll(BlockGroups.RUNE_T1);
-        tag(BlockTags.NEEDS_STONE_TOOL)
-                .addAll(BlockGroups.RUNE_T1);
-
-        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .addAll(BlockGroups.BLOODSTONE)
+                .addAll(BlockGroups.RUNE_T1)
                 .addAll(BlockGroups.RUNE_T2);
-        tag(Tags.Blocks.NEEDS_NETHERITE_TOOL)
+
+        this.tag(BlockTags.NEEDS_STONE_TOOL)
+                .addAll(BlockGroups.BLOODSTONE)
+                .addAll(BlockGroups.RUNE_T1);
+
+        this.tag(Tags.Blocks.NEEDS_NETHERITE_TOOL)
                 .addAll(BlockGroups.RUNE_T2);
     }
 }

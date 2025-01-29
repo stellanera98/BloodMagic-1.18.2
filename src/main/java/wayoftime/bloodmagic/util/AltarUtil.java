@@ -1,4 +1,4 @@
-package wayoftime.bloodmagic.util.helper;
+package wayoftime.bloodmagic.util;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -14,11 +14,12 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import wayoftime.bloodmagic.BloodMagic;
+import wayoftime.bloodmagic.datamap.BMDataMaps;
+import wayoftime.bloodmagic.datamap.BloodRune;
 import wayoftime.bloodmagic.registry.AltarComponent;
 import wayoftime.bloodmagic.registry.AltarTier;
 import wayoftime.bloodmagic.registry.BMRegistries;
 import wayoftime.bloodmagic.tag.BMTags;
-import wayoftime.bloodmagic.util.RuneType;
 
 import java.util.HashMap;
 import java.util.List;
@@ -45,8 +46,18 @@ public class AltarUtil {
         return lastTier;
     }
 
-    public static Map<RuneType, Integer> getUpgrades(int tier) {
-        return new HashMap<>();
+    public static Map<RuneType, Integer> getUpgrades(int tier, Level level, BlockPos altarPos) {
+        Map<RuneType, Integer> upgrades = new HashMap<>();
+        for (AltarComponent component : TIERS[tier]) {
+            if (component.isUpgrade()) {
+                List<BloodRune> runes = level.getBlockState(altarPos.offset(component.pos())).getBlockHolder().getData(BMDataMaps.BLOOD_RUNES);
+                if (runes != null) {
+                    runes.forEach(rune -> upgrades.merge(rune.type(), rune.amount(), Integer::sum));
+                }
+            }
+        }
+
+        return upgrades;
     }
 
     private static boolean check(Level level, BlockPos checkPos, ExtraCodecs.TagOrElementLocation material) {
@@ -66,15 +77,6 @@ public class AltarUtil {
 
     @SubscribeEvent
     public static void onDataPackLoaded(OnDatapackSyncEvent event) {
-        /*
-        List<AltarTier> tiers = event.getPlayer().registryAccess().registryOrThrow(BMRegistries.ALTAR_TIER_KEY).stream().toList();
-        TIERS = new List[tiers.size()];
-        for (AltarTier tier : tiers) {
-            BloodMagic.LOGGER.debug("Tier {} has {} components", tier.tier(), tier.components().size());
-            TIERS[tier.tier()] = tier.components();
-        }
-        */
-
         Registry<AltarTier> tierRegistry = event.getPlayer().registryAccess().registryOrThrow(BMRegistries.ALTAR_TIER_KEY);
         List<Holder<AltarTier>> tierList = tierRegistry.getOrCreateTag(BMTags.Tiers.VALID_TIERS).stream().toList();
         TIERS = new List[tierList.size()];
