@@ -65,7 +65,7 @@ public class BMLanguageProvider extends LanguageProvider {
     }
 
     public void add(BlockWithItemHolder<? extends Block, ? extends BlockItem> block, String name) {
-        add(block.block().get(), name);
+        add(block.block().get().getDescriptionId(), name);
     }
 
     public void addTooltip(String name, String value) {

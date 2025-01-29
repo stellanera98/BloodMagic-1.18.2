@@ -59,7 +59,9 @@ public class BMBlocks {
 
     private static final BlockBehaviour.Properties BLOODSTONE_PROPERTIES = BlockBehaviour.Properties.of().strength(2.0F, 5.0F).requiresCorrectToolForDrops();
     public static final BlockWithItemHolder<Block, BlockItem> BLOODSTONE = BASIC_REG.register("bloodstone", BLOODSTONE_PROPERTIES, DECORATION_ITEM_PROPERTIES);
+
     public static final BlockWithItemHolder<Block, BlockItem> BLOODSTONE_BRICK = BASIC_REG.register("bloodstone_brick", BLOODSTONE_PROPERTIES, DECORATION_ITEM_PROPERTIES);
+    //public static final BlockWithItemHolder<Block, BlockItem> POLISHED_BLOODSTONE = BASIC_REG.register("bloodstone_polished", BLOODSTONE_PROPERTIES, DECORATION_ITEM_PROPERTIES);
 
     public static void register(IEventBus modBus) {
         BASIC_BLOCKS.register(modBus);

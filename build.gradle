@@ -37,14 +37,12 @@ neoForge {
         minecraftVersion = project.parchment_minecraft_version
     }
 
-    addModdingDependenciesTo(sourceSets.datagen)
-
     mods {
         "${mod_id}" {
             sourceSet(sourceSets.main)
         }
         "data" {
-            sourceSet(sourceSets.main)
+            sourceSet(sourceSets.main) // needed since datagen isnt a valid mod file
             sourceSet(sourceSets.datagen)
         }
     }
@@ -68,7 +66,8 @@ neoForge {
 
         data {
             data()
-            loadedMods = [ mods.data ]
+            sourceSet = sourceSets.datagen // this makes the intellij configuration work
+            loadedMods = [ mods.data ] // this prevents from main loading on mod and data since default is all configured mods
             gameDirectory = project.file('run-data')
             programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
         }
